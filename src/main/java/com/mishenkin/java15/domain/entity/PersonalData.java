@@ -64,10 +64,11 @@ public class PersonalData {
      */
     private String examplesCode;
 
+    //конструктор
     public PersonalData(
             String FIO,
             String DOB,
-            String phone,
+            //String phone,
             String email,
             String skype,
             String avatar,

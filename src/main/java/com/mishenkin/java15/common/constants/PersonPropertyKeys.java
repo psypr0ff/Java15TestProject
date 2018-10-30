@@ -18,7 +18,7 @@ public interface PersonPropertyKeys {
     /**
      * Свойство - телефон
      */
-    String PHONE = "phone";
+    //String PHONE = "phone";
 
     /**
      * Свойство - электронная почта
@@ -43,17 +43,17 @@ public interface PersonPropertyKeys {
     /**
      * Свойство - опыт работы
      */
-    String EXPERIENCES = "experiences";
+    String EXPERIENCES = "experience";
 
     /**
      * Свойство - образование
      */
-    String EDUCATIONS = "educations";
+    String EDUCATIONS = "education";
 
     /**
      * Свойство - дополнительное образование
      */
-    String ADDITIONAL_EDUCATIONS = "additional_educations";
+    String ADDITIONAL_EDUCATIONS = "additeducation";
 
     /**
      * Свойство - скилы
@@ -63,5 +63,5 @@ public interface PersonPropertyKeys {
     /**
      * Свойство - примеры кода
      */
-    String EXAMPLES_CODE = "examples_code";
+    String EXAMPLES_CODE = "codeexample";
 }
