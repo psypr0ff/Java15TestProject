@@ -15,7 +15,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>Main</mainClass>
+                            <mainClass>com.mishenkin.java15.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
