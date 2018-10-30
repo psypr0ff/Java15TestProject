@@ -25,6 +25,6 @@ public class HtmlHead {
     }
 
     public String getHead(){
-        return head;
+        return this.head;
     }
 }
