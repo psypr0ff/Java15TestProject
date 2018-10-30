@@ -80,7 +80,7 @@ public class PersonalData {
             String examplesCode) {
         this.FIO = FIO;
         this.DOB = DOB;
-        this.phone = phone;
+        //this.phone = phone;
         this.email = email;
         this.skype = skype;
         this.avatar = avatar;
@@ -108,13 +108,13 @@ public class PersonalData {
         this.DOB = DOB;
     }
 
-    public String getPhone() {
+    /*public String getPhone() {
         return phone;
-    }
+    }*/
 
-    public void setPhone(String phone) {
+    /*public void setPhone(String phone) {
         this.phone = phone;
-    }
+    }*/
 
     public String getEmail() {
         return email;
