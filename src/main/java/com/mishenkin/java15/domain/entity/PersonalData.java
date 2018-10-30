@@ -1,5 +1,7 @@
 package com.mishenkin.java15.domain.entity;
 
+import java.util.ArrayList;
+
 /**
  * Created by Александр on 30.10.2018.
  */
@@ -17,12 +19,12 @@ public class PersonalData {
     /**
      * Свойство - телефон
      */
-    private String phone;
+    //private String phone;
 
     /**
      * Свойство - электронная почта
      */
-    private String email;
+    private String[] email;
 
     /**
      * Свойство - скайп
@@ -37,47 +39,47 @@ public class PersonalData {
     /**
      * Свойство - цель
      */
-    private String target;
+    private String[] target;
 
     /**
      * Свойство - опыт работы
      */
-    private String experiences;
+    private String[] experiences;
 
     /**
      * Свойство - образование
      */
-    private String educations;
+    private String[] educations;
 
     /**
      * Свойство - дополнительное образование
      */
-    private String additionalEducations;
+    private String[] additionalEducations;
 
     /**
      * Свойство - скилы
      */
-    private String skills;
+    private String[] skills;
 
     /**
      * Свойство - примеры кода
      */
-    private String examplesCode;
+    private String[] examplesCode;
 
     //конструктор
     public PersonalData(
             String FIO,
             String DOB,
             //String phone,
-            String email,
+            String[] email,
             String skype,
             String avatar,
-            String target,
-            String experiences,
-            String educations,
-            String additionalEducations,
-            String skills,
-            String examplesCode) {
+            String[] target,
+            String[] experiences,
+            String[] educations,
+            String[] additionalEducations,
+            String[] skills,
+            String[] examplesCode) {
         this.FIO = FIO;
         this.DOB = DOB;
         //this.phone = phone;
@@ -116,11 +118,11 @@ public class PersonalData {
         this.phone = phone;
     }*/
 
-    public String getEmail() {
+    public String[] getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(String[] email) {
         this.email = email;
     }
 
@@ -140,51 +142,51 @@ public class PersonalData {
         this.avatar = avatar;
     }
 
-    public String getTarget() {
+    public String[] getTarget() {
         return target;
     }
 
-    public void setTarget(String target) {
+    public void setTarget(String[] target) {
         this.target = target;
     }
 
-    public String getExperiences() {
+    public String[] getExperiences() {
         return experiences;
     }
 
-    public void setExperiences(String experiences) {
+    public void setExperiences(String[] experiences) {
         this.experiences = experiences;
     }
 
-    public String getEducations() {
+    public String[] getEducations() {
         return educations;
     }
 
-    public void setEducations(String educations) {
+    public void setEducations(String[] educations) {
         this.educations = educations;
     }
 
-    public String getAdditionalEducations() {
+    public String[] getAdditionalEducations() {
         return additionalEducations;
     }
 
-    public void setAdditionalEducations(String additionalEducations) {
+    public void setAdditionalEducations(String[] additionalEducations) {
         this.additionalEducations = additionalEducations;
     }
 
-    public String getSkills() {
+    public String[] getSkills() {
         return skills;
     }
 
-    public void setSkills(String skills) {
+    public void setSkills(String[] skills) {
         this.skills = skills;
     }
 
-    public String getExamplesCode() {
+    public String[] getExamplesCode() {
         return examplesCode;
     }
 
-    public void setExamplesCode(String examplesCode) {
+    public void setExamplesCode(String[] examplesCode) {
         this.examplesCode = examplesCode;
     }
 }

@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.Properties;
 
 
@@ -42,7 +43,8 @@ public class PersonRepositoryFromPropertyFileImpl implements PersonRepository{
         } catch (IOException e){
             e.printStackTrace();
         }
-        return null;
+        //return properties;
+            return null;
     }
 
     @Override
@@ -51,15 +53,15 @@ public class PersonRepositoryFromPropertyFileImpl implements PersonRepository{
         if (this.personDataFile != null) personalData = new PersonalData(
                 personDataFile.getProperty(PersonPropertyKeys.FIO),
                 personDataFile.getProperty(PersonPropertyKeys.DOB),
-                personDataFile.getProperty(PersonPropertyKeys.EMAIL),
+                personDataFile.getProperty(PersonPropertyKeys.EMAIL).split(";"),
                 personDataFile.getProperty(PersonPropertyKeys.SKYPE),
                 personDataFile.getProperty(PersonPropertyKeys.AVATAR),
-                personDataFile.getProperty(PersonPropertyKeys.TARGET),
-                personDataFile.getProperty(PersonPropertyKeys.EXPERIENCES),
-                personDataFile.getProperty(PersonPropertyKeys.EDUCATIONS),
-                personDataFile.getProperty(PersonPropertyKeys.ADDITIONAL_EDUCATIONS),
-                personDataFile.getProperty(PersonPropertyKeys.SKILLS),
-                personDataFile.getProperty(PersonPropertyKeys.EXAMPLES_CODE)
+                personDataFile.getProperty(PersonPropertyKeys.TARGET).split(";"),
+                personDataFile.getProperty(PersonPropertyKeys.EXPERIENCES).split(";"),
+                personDataFile.getProperty(PersonPropertyKeys.EDUCATIONS).split(";"),
+                personDataFile.getProperty(PersonPropertyKeys.ADDITIONAL_EDUCATIONS).split(";"),
+                personDataFile.getProperty(PersonPropertyKeys.SKILLS).split(";"),
+                personDataFile.getProperty(PersonPropertyKeys.EXAMPLES_CODE).split(";")
                 );
         return personalData;
     }

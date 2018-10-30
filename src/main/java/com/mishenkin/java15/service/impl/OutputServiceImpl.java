@@ -4,12 +4,18 @@ import com.mishenkin.java15.dao.repository.PersonRepository;
 import com.mishenkin.java15.dao.repository.impl.PersonRepositoryFromPropertyFileImpl;
 import com.mishenkin.java15.domain.entity.PersonalData;
 import com.mishenkin.java15.service.api.OutputService;
+import com.mishenkin.java15.view.HtmlView;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  * Created by Александр on 30.10.2018.
  */
 public class OutputServiceImpl implements OutputService{
     private PersonalData personalData;
+
 
     /**
      * Метод для подключения .properties файла
@@ -20,12 +26,32 @@ public class OutputServiceImpl implements OutputService{
                 getClass().getClassLoader().getResourceAsStream(propertyFilePath)
         );
         this.personalData = personRepository.getPersonalData();
+        System.out.println(personalData.getFIO());
     }
 
     @Override
     public void createHtmlFile(String outputHttpFilePath){
+        HtmlView html = new HtmlView(personalData);
         if (this.personalData != null){
-
+            try {
+                File file = new File(outputHttpFilePath);
+                if(!file.exists()){
+                    file.createNewFile();
+                }
+                FileWriter writer = new FileWriter(outputHttpFilePath, false);
+                for (String e:html.getHtml()) {
+                    System.out.println(e);
+                    writer.write(e);
+                }
+                writer.flush();
+                // log.info("HTML файл Резюме создан и записан");
+            }
+            catch(IOException ex){
+                System.out.println(ex.getMessage());
+                // log.error("Ошибка ввода вывода");
+            }
         }
+        /*for (int i=0; i<html.getHtml().size(); i++)
+            System.out.println(html.getHtml().get(i));*/
     }
 }
