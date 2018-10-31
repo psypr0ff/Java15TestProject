@@ -40,7 +40,6 @@ public class PersonRepositoryFromPropertyFileImpl implements PersonRepository{
         } catch (IOException e){
             e.printStackTrace();
         }
-        //return properties;
             return null;
     }
 
@@ -62,9 +61,5 @@ public class PersonRepositoryFromPropertyFileImpl implements PersonRepository{
                     personDataFile.getProperty(PersonPropertyKeys.EXAMPLES_CODE).split(";")
             );
             return personalData;
-        /*}catch (UnsupportedEncodingException e){
-            e.printStackTrace();
-        }
-        return null;*/
     }
 }

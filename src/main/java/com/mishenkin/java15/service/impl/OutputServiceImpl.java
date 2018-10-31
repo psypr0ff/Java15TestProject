@@ -16,7 +16,9 @@ import org.apache.log4j.Logger;
  */
 public class OutputServiceImpl implements OutputService{
     private PersonalData personalData;
-    private static final Logger log = Logger.getLogger(OutputServiceImpl.class);
+
+    org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(OutputServiceImpl.class);
+    //private static final Logger log = Logger.getLogger(OutputServiceImpl.class);
 
 
     /**
@@ -42,7 +44,7 @@ public class OutputServiceImpl implements OutputService{
                 }
                 FileWriter writer = new FileWriter(outputHttpFilePath, false);
                 for (String e:html.getHtml()) {
-                    //System.out.println(e);
+
                     writer.write(e);
                 }
                 writer.flush();
@@ -53,7 +55,5 @@ public class OutputServiceImpl implements OutputService{
                 // log.error("Ошибка ввода вывода");
             }
         }
-        /*for (int i=0; i<html.getHtml().size(); i++)
-            System.out.println(html.getHtml().get(i));*/
     }
 }

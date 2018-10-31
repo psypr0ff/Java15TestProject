@@ -5,6 +5,7 @@ import com.mishenkin.java15.domain.entity.PersonalData;
 import java.util.ArrayList;
 
 /**
+ * класс генерирует содержимое для HTML файла
  * Created by Александр on 31.10.2018.
  */
 public class HtmlView {
