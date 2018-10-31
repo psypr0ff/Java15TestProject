@@ -43,7 +43,7 @@ public class HtmlView {
         html.add( "<dl class='dl-horizontal' style='margin-bottom: 0;'>" +
                 "<dt>email</dt>" +
                 "<dd>");
-        for (String e:personalData.getEmail()) html.add(e+"<br>");
+        for (String e:personalData.getEmail()) if (e.length()>1) html.add(e+"<br>");else html.add(e);
         html.add("</dd></dl>");
         html.add("<dl class='dl-horizontal' style='margin-bottom: 0;'>" +
                 "<dt>Skype</dt><dd>" +

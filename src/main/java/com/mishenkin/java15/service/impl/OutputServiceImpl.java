@@ -31,7 +31,21 @@ public class OutputServiceImpl implements OutputService{
                 getClass().getClassLoader().getResourceAsStream(propertyFilePath)
         );
         this.personalData = personRepository.getPersonalData();
-        System.out.println(personalData.getFIO());
+    }
+
+    //конструктор по умолчанию
+    public OutputServiceImpl(){
+        this.personalData = new PersonalData("FIO",
+                "DOB",
+                new String[]{"email"},
+                "skype",
+                "avatar",
+                new String[]{"target"},
+                new String[]{"exp"},
+                new String[]{"ed"},
+                new String[]{"adEd"},
+                new String[]{"skills"},
+                new String[]{"codes"});
     }
 
     @Override
@@ -43,17 +57,16 @@ public class OutputServiceImpl implements OutputService{
                 if(!file.exists()){
                     file.createNewFile();
                 }
-                FileWriter writer = new FileWriter(outputHttpFilePath, false);
-                for (String e:html.getHtml()) {
-
-                    writer.write(e);
+                try (FileWriter writer = new FileWriter(outputHttpFilePath, false)){
+                    for (String e:html.getHtml())
+                        writer.write(e);
+                    writer.flush();
+                    log.info(outputHttpFilePath+" файл создан и записан");
                 }
-                writer.flush();
-                log.info("HTML файл Резюме создан и записан");
             }
             catch(IOException ex){
-                System.out.println(ex.getMessage());
-                // log.error("Ошибка ввода вывода");
+                //System.out.println(ex.getMessage());
+                log.error("Ошибка ввода вывода");
             }
         }
     }
