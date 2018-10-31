@@ -4,10 +4,7 @@ import com.mishenkin.java15.common.constants.PersonPropertyKeys;
 import com.mishenkin.java15.dao.repository.PersonRepository;
 import com.mishenkin.java15.domain.entity.PersonalData;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -50,19 +47,24 @@ public class PersonRepositoryFromPropertyFileImpl implements PersonRepository{
     @Override
     public PersonalData getPersonalData(){
         PersonalData personalData = null;
-        if (this.personDataFile != null) personalData = new PersonalData(
-                personDataFile.getProperty(PersonPropertyKeys.FIO),
-                personDataFile.getProperty(PersonPropertyKeys.DOB),
-                personDataFile.getProperty(PersonPropertyKeys.EMAIL).split(";"),
-                personDataFile.getProperty(PersonPropertyKeys.SKYPE),
-                personDataFile.getProperty(PersonPropertyKeys.AVATAR),
-                personDataFile.getProperty(PersonPropertyKeys.TARGET).split(";"),
-                personDataFile.getProperty(PersonPropertyKeys.EXPERIENCES).split(";"),
-                personDataFile.getProperty(PersonPropertyKeys.EDUCATIONS).split(";"),
-                personDataFile.getProperty(PersonPropertyKeys.ADDITIONAL_EDUCATIONS).split(";"),
-                personDataFile.getProperty(PersonPropertyKeys.SKILLS).split(";"),
-                personDataFile.getProperty(PersonPropertyKeys.EXAMPLES_CODE).split(";")
-                );
-        return personalData;
+        //try {
+            if (this.personDataFile != null) personalData = new PersonalData(
+                    personDataFile.getProperty(PersonPropertyKeys.FIO),
+                    personDataFile.getProperty(PersonPropertyKeys.DOB),
+                    personDataFile.getProperty(PersonPropertyKeys.EMAIL).split(";"),
+                    personDataFile.getProperty(PersonPropertyKeys.SKYPE),
+                    personDataFile.getProperty(PersonPropertyKeys.AVATAR),
+                    personDataFile.getProperty(PersonPropertyKeys.TARGET).split(";"),
+                    personDataFile.getProperty(PersonPropertyKeys.EXPERIENCES).split(";"),
+                    personDataFile.getProperty(PersonPropertyKeys.EDUCATIONS).split(";"),
+                    personDataFile.getProperty(PersonPropertyKeys.ADDITIONAL_EDUCATIONS).split(";"),
+                    personDataFile.getProperty(PersonPropertyKeys.SKILLS).split(";"),
+                    personDataFile.getProperty(PersonPropertyKeys.EXAMPLES_CODE).split(";")
+            );
+            return personalData;
+        /*}catch (UnsupportedEncodingException e){
+            e.printStackTrace();
+        }
+        return null;*/
     }
 }

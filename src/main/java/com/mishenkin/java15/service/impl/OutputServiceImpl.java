@@ -40,7 +40,7 @@ public class OutputServiceImpl implements OutputService{
                 }
                 FileWriter writer = new FileWriter(outputHttpFilePath, false);
                 for (String e:html.getHtml()) {
-                    System.out.println(e);
+                    //System.out.println(e);
                     writer.write(e);
                 }
                 writer.flush();
