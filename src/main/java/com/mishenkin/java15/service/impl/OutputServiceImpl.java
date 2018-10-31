@@ -9,12 +9,14 @@ import com.mishenkin.java15.view.HtmlView;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import org.apache.log4j.Logger;
 
 /**
  * Created by Александр on 30.10.2018.
  */
 public class OutputServiceImpl implements OutputService{
     private PersonalData personalData;
+    private static final Logger log = Logger.getLogger(OutputServiceImpl.class);
 
 
     /**
@@ -44,7 +46,7 @@ public class OutputServiceImpl implements OutputService{
                     writer.write(e);
                 }
                 writer.flush();
-                // log.info("HTML файл Резюме создан и записан");
+                log.info("HTML файл Резюме создан и записан");
             }
             catch(IOException ex){
                 System.out.println(ex.getMessage());
