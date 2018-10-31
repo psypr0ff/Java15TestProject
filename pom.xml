@@ -30,6 +30,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <mainClass>com.mishenkin.java15.Main</mainClass>
+                            <classpathPrefix>lib/</classpathPrefix>
                         </manifest>
                     </archive>
                 </configuration>
@@ -51,6 +52,12 @@
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.14.3</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

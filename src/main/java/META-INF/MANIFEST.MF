@@ -1,4 +1,4 @@
 Manifest-Version: 1.0
-Class-Path: src/main/java
+Class-Path: lib/
 Main-Class: com.mishenkin.java15.Main
 

@@ -9,6 +9,7 @@ import com.mishenkin.java15.view.HtmlView;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+
 import org.apache.log4j.Logger;
 
 /**
@@ -17,8 +18,8 @@ import org.apache.log4j.Logger;
 public class OutputServiceImpl implements OutputService{
     private PersonalData personalData;
 
-    org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(OutputServiceImpl.class);
-    //private static final Logger log = Logger.getLogger(OutputServiceImpl.class);
+    //org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(OutputServiceImpl.class);
+    private static final Logger log = Logger.getLogger(OutputServiceImpl.class);
 
 
     /**
