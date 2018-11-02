@@ -40,13 +40,12 @@ public class PersonRepositoryFromPropertyFileImpl implements PersonRepository{
         } catch (IOException e){
             e.printStackTrace();
         }
-            return null;
+        return null;
     }
 
     @Override
     public PersonalData getPersonalData(){
         PersonalData personalData = null;
-        //try {
             if (this.personDataFile != null) personalData = new PersonalData(
                     personDataFile.getProperty(PersonPropertyKeys.FIO),
                     personDataFile.getProperty(PersonPropertyKeys.DOB),

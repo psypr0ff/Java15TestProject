@@ -1,6 +1,7 @@
 package com.mishenkin.java15.domain.entity;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * Created by Александр on 30.10.2018.
@@ -188,5 +189,44 @@ public class PersonalData {
 
     public void setExamplesCode(String[] examplesCode) {
         this.examplesCode = examplesCode;
+    }
+
+    @Override //переопределяем метод equals для сравнения объекьлв
+    public boolean equals(Object otherObject){
+        //если объекты равны = true
+        if (this==otherObject) return true;
+
+        //если сравниваемый объект null тода false
+        if (otherObject == null) return false;
+
+        //приводим объект к типу PersonalData
+        PersonalData other = (PersonalData) otherObject;
+
+        //сравниваем все поля объекта
+        return Objects.equals(this.FIO, other.FIO)
+                && Objects.equals(DOB, other.DOB)
+                && equalsArray(this.email,other.email)
+                && equalsArray(this.target, other.target)
+                && equalsArray(this.experiences, other.experiences)
+                && equalsArray(this.educations, other.educations)
+                && equalsArray(this.additionalEducations, other.additionalEducations)
+                && equalsArray(this.examplesCode, other.examplesCode)
+                && equalsArray(this.skills, other.skills)
+                && Objects.equals(this.skype, other.skype)
+                && Objects.equals(this.avatar, other.avatar)
+                ;
+    }
+
+    //метод сравнивающий поэлементно строковые массивы
+    private boolean equalsArray(String[] a, String[] b){
+        boolean result = false;
+        if ((a == null && b != null)
+            || (a !=null && b==null)) result = false;
+        if (a.equals(b)) result=true;
+        if (a.length!=b.length) result=false;
+        for (int i=0; i<a.length;i++) {
+            result=a[i].equals(b[i]);
+        }
+        return result;
     }
 }

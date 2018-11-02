@@ -61,7 +61,7 @@ public class OutputServiceImpl implements OutputService{
                     for (String e:html.getHtml())
                         writer.write(e);
                     writer.flush();
-                    log.info(outputHttpFilePath+" файл создан и записан");
+                    log.info(outputHttpFilePath+" file created");
                 }
             }
             catch(IOException ex){
