@@ -3,9 +3,8 @@ package com.mishenkin.java15;
 import com.mishenkin.java15.service.api.OutputService;
 import com.mishenkin.java15.service.impl.OutputServiceImpl;
 
-import java.io.File;
-
 /**
+ * Главный класс, точка входа
  * Created by Александр on 30.10.2018.
  */
 public class Main {

@@ -1,9 +1,11 @@
 package com.mishenkin.java15.domain.entity;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
+ * класс-модель в котором описаны все поля из проперти файла
+ * и геттеры и сеттеры для них
  * Created by Александр on 30.10.2018.
  */
 public class PersonalData {
@@ -17,9 +19,6 @@ public class PersonalData {
      */
     private String DOB;
 
-    /**
-     * Свойство - телефон
-     */
     //private String phone;
 
     /**
@@ -199,34 +198,24 @@ public class PersonalData {
         //если сравниваемый объект null тода false
         if (otherObject == null) return false;
 
+        //если классы разные то false
+        if (getClass()!= otherObject.getClass()) return false;
+
         //приводим объект к типу PersonalData
         PersonalData other = (PersonalData) otherObject;
 
         //сравниваем все поля объекта
         return Objects.equals(this.FIO, other.FIO)
                 && Objects.equals(DOB, other.DOB)
-                && equalsArray(this.email,other.email)
-                && equalsArray(this.target, other.target)
-                && equalsArray(this.experiences, other.experiences)
-                && equalsArray(this.educations, other.educations)
-                && equalsArray(this.additionalEducations, other.additionalEducations)
-                && equalsArray(this.examplesCode, other.examplesCode)
-                && equalsArray(this.skills, other.skills)
+                && Arrays.equals(this.email, other.email)
+                && Arrays.equals(this.target, other.target)
+                && Arrays.equals(this.experiences, other.experiences)
+                && Arrays.equals(this.educations, other.educations)
+                && Arrays.equals(this.additionalEducations, other.additionalEducations)
+                && Arrays.equals(this.examplesCode, other.examplesCode)
+                && Arrays.equals(this.skills, other.skills)
                 && Objects.equals(this.skype, other.skype)
                 && Objects.equals(this.avatar, other.avatar)
                 ;
-    }
-
-    //метод сравнивающий поэлементно строковые массивы
-    private boolean equalsArray(String[] a, String[] b){
-        boolean result = false;
-        if ((a == null && b != null)
-            || (a !=null && b==null)) result = false;
-        if (a.equals(b)) result=true;
-        if (a.length!=b.length) result=false;
-        for (int i=0; i<a.length;i++) {
-            result=a[i].equals(b[i]);
-        }
-        return result;
     }
 }

@@ -4,9 +4,8 @@ import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.function.Predicate;
-
 /**
+ * тестирование проверки генерации HTML
  * Created by Александр on 31.10.2018.
  */
 public class HtmlViewGetHtmlTest {
@@ -31,7 +30,7 @@ public class HtmlViewGetHtmlTest {
         boolean result = htmlView
                 .getHtml()
                 .stream()
-                .anyMatch((Predicate<String>) s -> s.contains("<title>"+personalData.getFIO()));
+                .anyMatch(s -> s.contains("<title>"+personalData.getFIO()));
         if (result) log.info("Тест пройден");
         else log.error("Тест провален");
         Assert.assertTrue(result

@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class HtmlView {
     private ArrayList<String> html;
-    private PersonalData personalData;
+    private final PersonalData personalData;
 
     public HtmlView(PersonalData personalData){
         this.personalData = personalData;

@@ -6,7 +6,6 @@ import com.mishenkin.java15.domain.entity.PersonalData;
 
 import java.io.*;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
 import java.util.Properties;
 
 
@@ -17,7 +16,7 @@ import java.util.Properties;
  * Created by Александр on 30.10.2018.
  */
 public class PersonRepositoryFromPropertyFileImpl implements PersonRepository{
-    private Properties personDataFile;
+    private final Properties personDataFile;
 
     //конструктор
     public PersonRepositoryFromPropertyFileImpl(InputStream configFileInput){
@@ -35,8 +34,6 @@ public class PersonRepositoryFromPropertyFileImpl implements PersonRepository{
         try {
             properties.load(new InputStreamReader(configFileInput, Charset.forName("UTF-8")));
             return properties;
-        } catch (FileNotFoundException e){
-            e.printStackTrace();
         } catch (IOException e){
             e.printStackTrace();
         }

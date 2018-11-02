@@ -30,7 +30,6 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <mainClass>com.mishenkin.java15.Main</mainClass>
-                            <classpathPrefix>lib/</classpathPrefix>
                         </manifest>
                     </archive>
                 </configuration>

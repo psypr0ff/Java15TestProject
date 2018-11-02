@@ -8,6 +8,7 @@ import java.io.File;
 
 
 /**
+ * тестирование создания файла
  * Created by Александр on 31.10.2018.
  */
 public class OutputServiceImplCreateHtmlFileTest {

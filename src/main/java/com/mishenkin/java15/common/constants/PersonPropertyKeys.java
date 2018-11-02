@@ -15,9 +15,6 @@ public interface PersonPropertyKeys {
      */
     String DOB = "DOB";
 
-    /**
-     * Свойство - телефон
-     */
     //String PHONE = "phone";
 
     /**

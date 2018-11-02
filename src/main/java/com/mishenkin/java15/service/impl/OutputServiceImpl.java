@@ -6,17 +6,17 @@ import com.mishenkin.java15.domain.entity.PersonalData;
 import com.mishenkin.java15.service.api.OutputService;
 import com.mishenkin.java15.view.HtmlView;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
 import org.apache.log4j.Logger;
 
 /**
+ * реализация интерфейса OutputService
  * Created by Александр on 30.10.2018.
  */
 public class OutputServiceImpl implements OutputService{
-    private PersonalData personalData;
+    private final PersonalData personalData;
 
     //org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(OutputServiceImpl.class);
     private static final Logger log = Logger.getLogger(OutputServiceImpl.class);
@@ -52,17 +52,17 @@ public class OutputServiceImpl implements OutputService{
     public void createHtmlFile(String outputHttpFilePath){
         HtmlView html = new HtmlView(personalData);
         if (this.personalData != null){
-            try {
+            /*try {
                 File file = new File(outputHttpFilePath);
-                if(!file.exists()){
+                *//*if(!file.exists()){
                     file.createNewFile();
-                }
+                }*/
                 try (FileWriter writer = new FileWriter(outputHttpFilePath, false)){
                     for (String e:html.getHtml())
                         writer.write(e);
                     writer.flush();
                     log.info(outputHttpFilePath+" file created");
-                }
+                //}
             }
             catch(IOException ex){
                 //System.out.println(ex.getMessage());

@@ -9,12 +9,12 @@ import org.testng.annotations.Test;
 import java.io.*;
 
 /**
+ * проверка метода получения данных из проперти файла
  * Created by Александр on 02.11.2018.
  */
 public class PersRepPropertyFileImplGetPropertyTest {
     private PersonalData personalData;
-    private Helper helper;
-    private String path = "test.properties";
+    private final String path = "test.properties";
 
     @BeforeTest
     private void setTestData(){
@@ -29,7 +29,7 @@ public class PersRepPropertyFileImplGetPropertyTest {
                 new String[]{"addEducation"},
                 new String[]{"skills"},
                 new String[]{"codeExample"});
-        helper = new Helper(personalData);
+        Helper helper = new Helper(personalData);
         helper.createInputPropertyFile(path);
     }
 
@@ -38,9 +38,7 @@ public class PersRepPropertyFileImplGetPropertyTest {
         try(InputStream inputStream = new FileInputStream(path)) {
             PersonRepository propertyFile = new PersonRepositoryFromPropertyFileImpl(inputStream);
             Assert.assertTrue(personalData.equals(propertyFile.getPersonalData()));
-        }catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }catch (IOException e){
+        } catch (IOException e){
             e.printStackTrace();
         }
     }
