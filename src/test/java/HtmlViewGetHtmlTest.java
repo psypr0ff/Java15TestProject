@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+
 /**
  * тестирование проверки генерации HTML
  * Created by Александр on 31.10.2018.
@@ -12,7 +13,6 @@ import org.testng.annotations.Test;
 public class HtmlViewGetHtmlTest {
     private static final Logger log = Logger.getLogger(HtmlViewGetHtmlTest.class);
     private PersonalData personalData;
-
     @BeforeTest
     private void setTestData(){
         personalData = new PersonalData("FIO",
@@ -30,14 +30,14 @@ public class HtmlViewGetHtmlTest {
 
     @Test
     public void isGetHtmlMethodReturnNotNull(){
-        log.info("Запущен тест проверки генерации содержимого HTML файла");
+        log.info("HTML-data generating test started");
         HtmlView htmlView = new HtmlView(personalData);
         boolean result = htmlView
                 .getHtml()
                 .stream()
                 .anyMatch(s -> s.contains("<title>"+personalData.getFIO()));
-        if (result) log.info("Тест пройден");
-        else log.error("Тест провален");
+        if (result) log.info("HTML-data generating test passed");
+        else log.error("HTML-data generating test failed");
         Assert.assertTrue(result);
     }
 }

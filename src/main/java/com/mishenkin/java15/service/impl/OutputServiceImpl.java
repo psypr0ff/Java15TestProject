@@ -6,6 +6,7 @@ import com.mishenkin.java15.domain.entity.PersonalData;
 import com.mishenkin.java15.service.api.OutputService;
 import com.mishenkin.java15.view.HtmlView;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -17,8 +18,6 @@ import org.apache.log4j.Logger;
  */
 public class OutputServiceImpl implements OutputService{
     private final PersonalData personalData;
-
-    //org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(OutputServiceImpl.class);
     private static final Logger log = Logger.getLogger(OutputServiceImpl.class);
 
 
@@ -27,10 +26,26 @@ public class OutputServiceImpl implements OutputService{
      * @param propertyFilePath - путь к .properties файла
      */
     public OutputServiceImpl(String propertyFilePath){
+        //File file = new File(propertyFilePath);
+        if (new File(propertyFilePath).exists()){
         PersonRepository personRepository = new PersonRepositoryFromPropertyFileImpl(
                 getClass().getClassLoader().getResourceAsStream(propertyFilePath)
         );
-        this.personalData = personRepository.getPersonalData();
+        this.personalData = personRepository.getPersonalData();}
+        else {
+            log.error("Property file not found. Using default values.");
+            this.personalData = new PersonalData("FIO",
+                    "DOB",
+                    new String[]{"email"},
+                    "skype",
+                    "avatar",
+                    new String[]{"target"},
+                    new String[]{"experiences"},
+                    new String[]{"educations"},
+                    new String[]{"additional educations"},
+                    new String[]{"skills"},
+                    new String[]{"codes"});
+        }
     }
 
     //конструктор по умолчанию
@@ -53,21 +68,14 @@ public class OutputServiceImpl implements OutputService{
         HtmlView html = new HtmlView(personalData);
         if (this.personalData != null)
         {
-            /*try {
-                File file = new File(outputHttpFilePath);
-                *//*if(!file.exists()){
-                    file.createNewFile();
-                }*/
-                try (FileWriter writer = new FileWriter(outputHttpFilePath, false)){
-                    for (String e:html.getHtml())
-                        writer.write(e);
-                    writer.flush();
-                    log.info(outputHttpFilePath+" file created");
-                //}
+            try (FileWriter writer = new FileWriter(outputHttpFilePath, false)){
+                for (String e:html.getHtml())
+                    writer.write(e);
+                writer.flush();
+                log.info(outputHttpFilePath+" file created");
             }
             catch(IOException ex){
-                //System.out.println(ex.getMessage());
-                log.error("Ошибка ввода вывода");
+                log.error("Input/output error");
             }
         }
     }

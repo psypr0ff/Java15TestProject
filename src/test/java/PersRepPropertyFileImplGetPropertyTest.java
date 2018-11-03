@@ -37,19 +37,22 @@ public class PersRepPropertyFileImplGetPropertyTest {
 
     @Test
     public void getPropertyTest(){
+        log.info("getProperty() method test started");
         try(InputStream inputStream = new FileInputStream(path)) {
             PersonRepository propertyFile = new PersonRepositoryFromPropertyFileImpl(inputStream);
             Assert.assertTrue(personalData.equals(propertyFile.getPersonalData()));
+            log.info("getProperty() method test passed");
         } catch (IOException e){
             e.printStackTrace();
+            log.error("input-output error");
         }
     }
 
     @AfterTest
     private void clean(){
         File file = new File(path);
-        if (file.delete()) log.info("Файл "+path+" удален");
-        else log.error(path + " не удален");
+        if (file.delete()) log.info(path+" file deleted");
+        else log.error(path+" file is not deleted");
             //System.out.println("файл удален");
     }
 

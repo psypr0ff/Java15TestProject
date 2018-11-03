@@ -1,6 +1,7 @@
 package com.mishenkin.java15.view;
 
 import com.mishenkin.java15.domain.entity.PersonalData;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 public class HtmlView {
     private ArrayList<String> html;
     private final PersonalData personalData;
+    private static final Logger log = Logger.getLogger(HtmlView.class);
 
     public HtmlView(PersonalData personalData){
         this.personalData = personalData;
@@ -105,6 +107,7 @@ public class HtmlView {
                 "</div>" +
                 "</body>" +
                 "</html>");
+        log.info("Generating html data");
     }
 
     public ArrayList<String> getHtml(){

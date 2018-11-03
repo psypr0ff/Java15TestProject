@@ -17,19 +17,19 @@ public class OutputServiceImplCreateHtmlFileTest {
 
     @Test
     public void isHtmlFileCreated(){
-        log.info("Запущен тест проверки метода создания файла "+path);
+        log.info("Testing "+path+" file creating started");
         OutputServiceImpl outputService = new OutputServiceImpl();
         outputService.createHtmlFile(path);
         File file = new File(path);
-        if (file.exists()) log.info("Тест пройден");
-        else log.error("Тест провален");
+        if (file.exists()) log.info(path+" file creating test passed");
+        else log.error(path+" file creating test failed");
         Assert.assertTrue(file.exists());
     }
 
     @AfterTest
     private void clean(){
         File file = new File(path);
-        if (file.delete()) log.info("Файл "+path+" удален");
-        else log.error(path + " не удален");
+        if (file.delete()) log.info("File "+path+" deleted");
+        else log.error(path + " is not deleted");
     }
 }
