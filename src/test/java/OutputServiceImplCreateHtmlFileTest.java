@@ -27,7 +27,7 @@ public class OutputServiceImplCreateHtmlFileTest {
     }
 
     @AfterTest
-    public void clean(){
+    private void clean(){
         File file = new File(path);
         if (file.delete()) log.info("Файл "+path+" удален");
         else log.error(path + " не удален");

@@ -94,6 +94,10 @@ public class PersonalData {
         this.examplesCode = examplesCode;
     }
 
+    public PersonalData(){
+        this(null,null,null,null,null,null,null,null,null,null,null);
+    }
+
     public String getFIO() {
         return FIO;
     }

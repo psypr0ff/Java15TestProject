@@ -14,7 +14,7 @@ public class HtmlViewGetHtmlTest {
     private PersonalData personalData;
 
     @BeforeTest
-    public void setTestData(){
+    private void setTestData(){
         personalData = new PersonalData("FIO",
                 "DOB",
                 new String[]{"email"},
