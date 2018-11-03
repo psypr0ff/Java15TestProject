@@ -50,10 +50,7 @@ public class PersRepPropertyFileImplGetPropertyTest {
 
     @AfterTest
     private void clean(){
-        File file = new File(path);
-        if (file.delete()) log.info(path+" file deleted");
-        else log.error(path+" file is not deleted");
-            //System.out.println("файл удален");
+        Helper.deleteFile(path);
     }
 
 }

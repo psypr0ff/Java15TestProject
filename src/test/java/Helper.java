@@ -1,5 +1,7 @@
 import com.mishenkin.java15.domain.entity.PersonalData;
+import org.apache.log4j.Logger;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -9,12 +11,13 @@ import java.io.IOException;
  */
 class Helper {
     private final PersonalData personalData;
+    private static final Logger log = Logger.getLogger(Helper.class);
 
-    public Helper(PersonalData personalData){
+    Helper(PersonalData personalData){
         this.personalData = personalData;
     }
 
-    public void createInputPropertyFile(String path){
+    void createInputPropertyFile(String path){
         if (this.personalData != null){
             /*try {
                 File file = new File(path);
@@ -42,5 +45,11 @@ class Helper {
                 //log.error("Ошибка ввода вывода");
             }
         }
+    }
+
+    static void deleteFile(String path){
+        File file = new File(path);
+        if (file.delete()) log.info("File "+path+" deleted");
+        else log.error(path + " is not deleted");
     }
 }

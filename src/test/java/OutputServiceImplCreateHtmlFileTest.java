@@ -13,7 +13,8 @@ import java.io.File;
  */
 public class OutputServiceImplCreateHtmlFileTest {
     private static final Logger log = Logger.getLogger(OutputServiceImplCreateHtmlFileTest.class);
-    private final String path = "test.html";
+    private static final String path = "test.html";
+
 
     @Test
     public void isHtmlFileCreated(){
@@ -28,8 +29,6 @@ public class OutputServiceImplCreateHtmlFileTest {
 
     @AfterTest
     private void clean(){
-        File file = new File(path);
-        if (file.delete()) log.info("File "+path+" deleted");
-        else log.error(path + " is not deleted");
+        Helper.deleteFile(path);
     }
 }

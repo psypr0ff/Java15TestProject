@@ -13,6 +13,7 @@ import org.testng.annotations.Test;
 public class HtmlViewGetHtmlTest {
     private static final Logger log = Logger.getLogger(HtmlViewGetHtmlTest.class);
     private PersonalData personalData;
+
     @BeforeTest
     private void setTestData(){
         personalData = new PersonalData("FIO",
