@@ -16,9 +16,8 @@
 
 
     <build>
-        <outputDirectory>out/artifacts</outputDirectory>
         <finalName>Java15TestProject</finalName>
-        <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
+
 
         <plugins>
             <plugin>
@@ -28,8 +27,8 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <addClasspath>true</addClasspath>
                             <mainClass>com.mishenkin.java15.Main</mainClass>
+                            <addClasspath>true</addClasspath>
                         </manifest>
                     </archive>
                 </configuration>
@@ -51,6 +50,7 @@
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
