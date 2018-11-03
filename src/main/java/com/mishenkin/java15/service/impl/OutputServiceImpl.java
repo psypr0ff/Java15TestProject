@@ -51,7 +51,8 @@ public class OutputServiceImpl implements OutputService{
     @Override
     public void createHtmlFile(String outputHttpFilePath){
         HtmlView html = new HtmlView(personalData);
-        if (this.personalData != null){
+        if (this.personalData != null)
+        {
             /*try {
                 File file = new File(outputHttpFilePath);
                 *//*if(!file.exists()){

@@ -2,6 +2,7 @@ import com.mishenkin.java15.domain.entity.PersonalData;
 import com.mishenkin.java15.view.HtmlView;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 /**
@@ -10,11 +11,11 @@ import org.testng.annotations.Test;
  */
 public class HtmlViewGetHtmlTest {
     private static final Logger log = Logger.getLogger(HtmlViewGetHtmlTest.class);
+    private PersonalData personalData;
 
-    @Test
-    public void isGetHtmlMethodReturnNotNull(){
-        log.info("Запущен тест проверки генерации содержимого HTML файла");
-        PersonalData personalData = new PersonalData("FIO",
+    @BeforeTest
+    public void setTestData(){
+        personalData = new PersonalData("FIO",
                 "DOB",
                 new String[]{"email"},
                 "skype",
@@ -25,7 +26,11 @@ public class HtmlViewGetHtmlTest {
                 new String[]{"addEducation"},
                 new String[]{"skills"},
                 new String[]{"codeExample"});
+    }
 
+    @Test
+    public void isGetHtmlMethodReturnNotNull(){
+        log.info("Запущен тест проверки генерации содержимого HTML файла");
         HtmlView htmlView = new HtmlView(personalData);
         boolean result = htmlView
                 .getHtml()
@@ -33,11 +38,6 @@ public class HtmlViewGetHtmlTest {
                 .anyMatch(s -> s.contains("<title>"+personalData.getFIO()));
         if (result) log.info("Тест пройден");
         else log.error("Тест провален");
-        Assert.assertTrue(result
-                /*htmlView
-                .getHtml()
-                .stream()
-                .anyMatch((Predicate<String>) s -> s.contains("<title>"+personalData.getFIO()))*/
-        );
+        Assert.assertTrue(result);
     }
 }
