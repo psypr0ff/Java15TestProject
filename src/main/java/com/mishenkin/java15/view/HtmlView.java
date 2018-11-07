@@ -102,7 +102,7 @@ public class HtmlView {
                 "<h3 class='panel-title'>Навыки</h3>" +
                 "</div>" +
                 "<div class='panel-body'>");
-        personalData.getAdditionalEducationsList().forEach(e->html.add("<li>"+e+"<br>"));
+        personalData.getSkillsList().forEach(e->html.add("<li>"+e+"<br>"));
         //for (String e:personalData.getSkillsList()) html.add("<li>"+e+"<br>");
         html.add("</div>" +
                 "</div>" +
