@@ -69,6 +69,7 @@ public class OutputServiceImpl implements OutputService{
         if (this.personalData != null)
         {
             try (FileWriter writer = new FileWriter(outputHttpFilePath, false)){
+                //html.getHtml().forEach(tag -> writer.write(tag));
                 for (String e:html.getHtml())
                     writer.write(e);
                 writer.flush();

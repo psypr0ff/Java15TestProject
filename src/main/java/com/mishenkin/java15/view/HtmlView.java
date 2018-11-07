@@ -45,7 +45,7 @@ public class HtmlView {
         html.add( "<dl class='dl-horizontal' style='margin-bottom: 0;'>" +
                 "<dt>email</dt>" +
                 "<dd>");
-        for (String e:personalData.getEmail()) if (e.length()>1) html.add(e+"<br>");else html.add(e);
+        for (String e:personalData.getEmailList()) if (e.length()>1) html.add(e+"<br>");else html.add(e);
         html.add("</dd></dl>");
         html.add("<dl class='dl-horizontal' style='margin-bottom: 0;'>" +
                 "<dt>Skype</dt><dd>" +
@@ -62,14 +62,14 @@ public class HtmlView {
                 "<h3 class='panel-title'>Цель</h3>" +
                 "</div>" +
                 "<div class='panel-body'>");
-        for (String e:personalData.getTarget()) html.add("<li>"+e+"<br>");
+        for (String e:personalData.getTargetList()) if(e.length()>1) html.add("<li>"+e+"<br>"); else html.add(e);
         html.add("</div></div>");
         html.add("<div class='panel panel-default' style='margin: 20px; '>" +
                 "<div class='panel-heading'>" +
                 "<h3 class='panel-title'>Опыт</h3>" +
                 "</div>" +
                 "<div class='panel-body'>");
-        for (String e:personalData.getExperiences()) html.add("<li>"+e+"<br>");
+        for (String e:personalData.getExperiencesList()) html.add("<li>"+e+"<br>");
         html.add("</div>" +
                 "</div>" +
                 "<div class='panel panel-default' style='margin: 20px; '>" +
@@ -77,7 +77,7 @@ public class HtmlView {
                 "<h3 class='panel-title'>Образование</h3>" +
                 "</div>" +
                 "<div class='panel-body'>");
-        for (String e:personalData.getEducations()) html.add("<li>"+e+"<br>");
+        for (String e:personalData.getEducationsList()) html.add("<li>"+e+"<br>");
         html.add("</div>" +
                 "</div>" +
                 "<div class='panel panel-default' style='margin: 20px; '>" +
@@ -85,7 +85,7 @@ public class HtmlView {
                 "<h3 class='panel-title'>Доп.образование и курсы</h3>" +
                 "</div>" +
                 "<div class='panel-body'>");
-        for (String e:personalData.getAdditionalEducations()) html.add("<li>"+e+"<br>");
+        for (String e:personalData.getAdditionalEducationsList()) html.add("<li>"+e+"<br>");
         html.add("</div>" +
                 "</div>" +
                 "<div class='panel panel-default' style='margin: 20px; '>" +
@@ -93,7 +93,7 @@ public class HtmlView {
                 "<h3 class='panel-title'>Навыки</h3>" +
                 "</div>" +
                 "<div class='panel-body'>");
-        for (String e:personalData.getSkills()) html.add("<li>"+e+"<br>");
+        for (String e:personalData.getSkillsList()) html.add("<li>"+e+"<br>");
         html.add("</div>" +
                 "</div>" +
                 "<div class='panel panel-default' style='margin: 20px; '>" +
@@ -101,7 +101,7 @@ public class HtmlView {
                 "<h3 class='panel-title'>Пример кода</h3>" +
                 "</div>" +
                 "<div class='panel-body'>");
-        for (String e:personalData.getExamplesCode()) html.add("<li><a href="+e+">"+e+"</a><br>");
+        for (String e:personalData.getCodeExaplesList()) html.add("<li><a href="+e+">"+e+"</a><br>");
         html.add("</div>" +
                 "</div>" +
                 "</div>" +

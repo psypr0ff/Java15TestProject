@@ -1,7 +1,6 @@
 package com.mishenkin.java15.domain.entity;
 
-import java.util.Arrays;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * класс-модель в котором описаны все поля из проперти файла
@@ -221,5 +220,49 @@ public class PersonalData {
                 && Objects.equals(this.skype, other.skype)
                 && Objects.equals(this.avatar, other.avatar)
                 ;
+    }
+
+    //-------------------- приводим данные из массивов проперти к коллекциям
+
+    public ArrayList<String> getEmailList(){
+        ArrayList<String> emailList = new ArrayList<>();
+        Collections.addAll(emailList, email);
+        return emailList;
+    }
+
+    public ArrayList<String> getTargetList(){
+        ArrayList<String> targetList = new ArrayList<>();
+        Collections.addAll(targetList, target);
+        return targetList;
+    }
+
+    public ArrayList<String> getExperiencesList(){
+        ArrayList<String> experiencesList = new ArrayList<>();
+        Collections.addAll(experiencesList, experiences);
+        return experiencesList;
+    }
+
+    public ArrayList<String> getEducationsList(){
+        ArrayList<String> educationsList = new ArrayList<>();
+        Collections.addAll(educationsList, educations);
+        return educationsList;
+    }
+
+    public ArrayList<String> getAdditionalEducationsList(){
+        ArrayList<String> additionalEducationList = new ArrayList<>();
+        Collections.addAll(additionalEducationList, additionalEducations);
+        return additionalEducationList;
+    }
+
+    public ArrayList<String> getSkillsList(){
+        ArrayList<String> skillsList = new ArrayList<>();
+        Collections.addAll(skillsList,skills);
+        return skillsList;
+    }
+
+    public ArrayList<String> getCodeExaplesList(){
+        ArrayList<String> codeExampleList = new ArrayList<>();
+        Collections.addAll(codeExampleList, examplesCode);
+        return codeExampleList;
     }
 }
