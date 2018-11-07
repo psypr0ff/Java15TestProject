@@ -37,7 +37,7 @@ class Helper {
                             "\nskills="+personalData.getSkills()[0]+
                             "\ncodeexample="+personalData.getExamplesCode()[0]);
                     writer.flush();
-                    //log.info(outputHttpFilePath+" file created");
+                    log.info(path+" file created");
                 }
            // }
             catch(IOException ex){

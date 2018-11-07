@@ -6,9 +6,7 @@ import com.mishenkin.java15.domain.entity.PersonalData;
 import com.mishenkin.java15.service.api.OutputService;
 import com.mishenkin.java15.view.HtmlView;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 import org.apache.log4j.Logger;
 
@@ -28,10 +26,19 @@ public class OutputServiceImpl implements OutputService{
     public OutputServiceImpl(String propertyFilePath){
         //File file = new File(propertyFilePath);
         if (new File(propertyFilePath).exists()){
-        PersonRepository personRepository = new PersonRepositoryFromPropertyFileImpl(
-                getClass().getClassLoader().getResourceAsStream(propertyFilePath)
-        );
-        this.personalData = personRepository.getPersonalData();}
+            PersonRepository personRepository = null;
+            try (InputStream fileInputStream = new FileInputStream(propertyFilePath) ){
+                personRepository = new PersonRepositoryFromPropertyFileImpl(
+                        fileInputStream
+                        //getClass().getClassLoader().getResourceAsStream(propertyFilePath)
+                        );
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if (personRepository != null) {
+                this.personalData = personRepository.getPersonalData();
+            } else this.personalData = new PersonalData();
+        }
         else {
             log.error("Property file not found. Using default values.");
             this.personalData = new PersonalData("FIO",

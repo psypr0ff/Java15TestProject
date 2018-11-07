@@ -31,6 +31,7 @@ public class MainTest {
 
     @Test
     public void acceptanceTest(){
+
         OutputServiceImpl outputService = new OutputServiceImpl(propertyPath);
         outputService.createHtmlFile(htmlPath);
     }
