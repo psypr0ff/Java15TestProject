@@ -42,7 +42,7 @@ class Helper {
            // }
             catch(IOException ex){
                 System.out.println(ex.getMessage());
-                //log.error("Ошибка ввода вывода");
+                log.error("Ошибка ввода вывода");
             }
         }
     }
