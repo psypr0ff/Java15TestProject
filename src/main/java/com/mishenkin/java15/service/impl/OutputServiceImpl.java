@@ -50,7 +50,7 @@ public class OutputServiceImpl implements OutputService{
                     new String[]{"experiences"},
                     new String[]{"educations"},
                     new String[]{"additional educations"},
-                    new String[]{"skills"},
+                    new String[]{"skill01:10","skill03:30","skill02:20"},
                     new String[]{"codes"});
         }
     }
@@ -66,7 +66,7 @@ public class OutputServiceImpl implements OutputService{
                 new String[]{"exp"},
                 new String[]{"ed"},
                 new String[]{"adEd"},
-                new String[]{"skills"},
+                new String[]{"skill01:10","skill03:30","skill02:20"},
                 new String[]{"codes"});
     }
 

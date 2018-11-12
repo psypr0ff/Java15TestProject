@@ -23,7 +23,7 @@ public class MainTest {
                 new String[]{"experience"},
                 new String[]{"educations"},
                 new String[]{"addEducation"},
-                new String[]{"skills"},
+                new String[]{"skill01","skill03:30","skill02:20"},
                 new String[]{"codeExample"});
         Helper helper = new Helper(personalData);
         helper.createInputPropertyFile(propertyPath);

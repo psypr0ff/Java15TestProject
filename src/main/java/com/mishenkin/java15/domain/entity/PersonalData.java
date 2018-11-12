@@ -265,4 +265,16 @@ public class PersonalData {
         Collections.addAll(codeExampleList, examplesCode);
         return codeExampleList;
     }
+
+    public HashMap<String, String> getSkillsMap(){
+        HashMap<String, String> skillsMap = new HashMap<>();
+        if (!getSkillsList().isEmpty()) {
+            getSkillsList().forEach(e ->{
+                if (e.split(":").length>1) {
+                    skillsMap.put(e.split(":")[0].trim(), e.split(":")[1].trim());
+                } else skillsMap.put(e,"0");
+            });
+        }
+        return skillsMap;
+    }
 }

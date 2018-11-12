@@ -4,6 +4,7 @@ import com.mishenkin.java15.domain.entity.PersonalData;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * класс генерирует содержимое для HTML файла
@@ -102,7 +103,14 @@ public class HtmlView {
                 "<h3 class='panel-title'>Навыки</h3>" +
                 "</div>" +
                 "<div class='panel-body'>");
-        personalData.getSkillsList().forEach(e->html.add("<li>"+e+"<br>"));
+        if (!personalData.getSkillsMap().isEmpty())
+        personalData
+                .getSkillsMap()
+                .entrySet()
+                .stream()
+                .sorted(Map.Entry.<String,String>comparingByValue().reversed())
+                .forEach(e->html.add("<li>"+e.getKey()+": "+e.getValue()+"<br>"));
+       else personalData.getSkillsList().forEach(e->html.add("<li>"+e+"<br>"));
         //for (String e:personalData.getSkillsList()) html.add("<li>"+e+"<br>");
         html.add("</div>" +
                 "</div>" +
