@@ -18,8 +18,6 @@ public class PersonalData {
      */
     private String DOB;
 
-    //private String phone;
-
     /**
      * Свойство - электронная почта
      */
@@ -69,7 +67,6 @@ public class PersonalData {
     public PersonalData(
             String FIO,
             String DOB,
-            //String phone,
             String[] email,
             String skype,
             String avatar,
@@ -81,7 +78,6 @@ public class PersonalData {
             String[] examplesCode) {
         this.FIO = FIO;
         this.DOB = DOB;
-        //this.phone = phone;
         this.email = email;
         this.skype = skype;
         this.avatar = avatar;
@@ -112,14 +108,6 @@ public class PersonalData {
     public void setDOB(String DOB) {
         this.DOB = DOB;
     }
-
-    /*public String getPhone() {
-        return phone;
-    }*/
-
-    /*public void setPhone(String phone) {
-        this.phone = phone;
-    }*/
 
     public String[] getEmail() {
         return email;

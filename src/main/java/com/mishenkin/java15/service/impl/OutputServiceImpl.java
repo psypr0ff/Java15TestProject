@@ -5,15 +5,15 @@ import com.mishenkin.java15.dao.repository.impl.PersonRepositoryFromPropertyFile
 import com.mishenkin.java15.domain.entity.PersonalData;
 import com.mishenkin.java15.service.api.OutputService;
 import com.mishenkin.java15.view.HtmlView;
+import org.apache.log4j.Logger;
 
 import java.io.*;
-
-import org.apache.log4j.Logger;
 
 /**
  * реализация интерфейса OutputService
  * Created by Александр on 30.10.2018.
  */
+
 public class OutputServiceImpl implements OutputService{
     private final PersonalData personalData;
     private static final Logger log = Logger.getLogger(OutputServiceImpl.class);
@@ -68,6 +68,10 @@ public class OutputServiceImpl implements OutputService{
                 new String[]{"adEd"},
                 new String[]{"skill01:10","skill03:30","skill02:20"},
                 new String[]{"codes"});
+    }
+
+    public OutputServiceImpl(PersonalData personalData){
+        this.personalData= personalData;
     }
 
     @Override

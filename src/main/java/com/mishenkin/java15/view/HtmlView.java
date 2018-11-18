@@ -5,6 +5,7 @@ import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * класс генерирует содержимое для HTML файла
@@ -133,4 +134,11 @@ public class HtmlView {
         generateHtml();
         return this.html;
     }
+
+
+
+    public String htmlData(){
+        return this.getHtml().stream().map(e-> e).collect(Collectors.joining());
+    }
+
 }
