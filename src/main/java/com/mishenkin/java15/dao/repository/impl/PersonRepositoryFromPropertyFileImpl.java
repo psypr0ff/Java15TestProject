@@ -1,5 +1,6 @@
 package com.mishenkin.java15.dao.repository.impl;
 
+import com.mishenkin.java15.common.constants.PersonPropertyErrors;
 import com.mishenkin.java15.common.constants.PersonPropertyKeys;
 import com.mishenkin.java15.dao.repository.PersonRepository;
 import com.mishenkin.java15.domain.entity.PersonalData;
@@ -45,17 +46,17 @@ public class PersonRepositoryFromPropertyFileImpl implements PersonRepository{
     public PersonalData getPersonalData(){
         PersonalData personalData = null;
             if (this.personDataFile != null) personalData = new PersonalData(
-                    personDataFile.getProperty(PersonPropertyKeys.FIO,"имя не указано"),
-                    personDataFile.getProperty(PersonPropertyKeys.DOB, "дата рождения не указана"),
-                    personDataFile.getProperty(PersonPropertyKeys.EMAIL, "электронная почта не указвна").split(";"),
-                    personDataFile.getProperty(PersonPropertyKeys.SKYPE, "skype не указан"),
-                    personDataFile.getProperty(PersonPropertyKeys.AVATAR, "' alt='не указана ссылка на автар'"),
-                    personDataFile.getProperty(PersonPropertyKeys.TARGET, "цели не указаны").split(";"),
-                    personDataFile.getProperty(PersonPropertyKeys.EXPERIENCES,"опыт не указан").split(";"),
-                    personDataFile.getProperty(PersonPropertyKeys.EDUCATIONS, "образование не указано").split(";"),
-                    personDataFile.getProperty(PersonPropertyKeys.ADDITIONAL_EDUCATIONS, "доп образование не указано").split(";"),
-                    personDataFile.getProperty(PersonPropertyKeys.SKILLS, "навыки не указаны").split(";"),
-                    personDataFile.getProperty(PersonPropertyKeys.EXAMPLES_CODE, "примеры кода отсутствуют").split(";")
+                    personDataFile.getProperty(PersonPropertyKeys.FIO, PersonPropertyErrors.FIO_ERROR),
+                    personDataFile.getProperty(PersonPropertyKeys.DOB, PersonPropertyErrors.DOB_ERROR),
+                    personDataFile.getProperty(PersonPropertyKeys.EMAIL, PersonPropertyErrors.EMAIL_ERROR[0]).split(";"),
+                    personDataFile.getProperty(PersonPropertyKeys.SKYPE, PersonPropertyErrors.SKYPE_ERROR),
+                    personDataFile.getProperty(PersonPropertyKeys.AVATAR, PersonPropertyErrors.AVATAR_ERROR),
+                    personDataFile.getProperty(PersonPropertyKeys.TARGET, PersonPropertyErrors.TARGET_ERROR[0]).split(";"),
+                    personDataFile.getProperty(PersonPropertyKeys.EXPERIENCES,PersonPropertyErrors.EXPERIENCE_ERROR[0]).split(";"),
+                    personDataFile.getProperty(PersonPropertyKeys.EDUCATIONS, PersonPropertyErrors.EDUCATION_ERROR[0]).split(";"),
+                    personDataFile.getProperty(PersonPropertyKeys.ADDITIONAL_EDUCATIONS, PersonPropertyErrors.ADDITIONAL_EDUCATION_ERROR[0]).split(";"),
+                    personDataFile.getProperty(PersonPropertyKeys.SKILLS, PersonPropertyErrors.SKILLS_ERROR[0]).split(";"),
+                    personDataFile.getProperty(PersonPropertyKeys.EXAMPLES_CODE, PersonPropertyErrors.CODE_EXAMPLES_ERROR[0]).split(";")
             );
             log.info("Reading data from property file");
             return personalData;

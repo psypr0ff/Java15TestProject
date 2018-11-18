@@ -26,7 +26,7 @@ class Helper {
                 }*/
                 try (FileWriter writer = new FileWriter(path, false)){
                     writer.write("FIO="+personalData.getFIO()+
-                            "\nDOB="+personalData.getDOB()+
+                            "\nDOB_ERROR="+personalData.getDOB()+
                             "\nemail="+personalData.getEmail()[0]+
                             "\nskype="+personalData.getSkype()+
                             "\navatar="+personalData.getAvatar()+

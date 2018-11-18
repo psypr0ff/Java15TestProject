@@ -1,4 +1,4 @@
-package com.mishenkin.java15.controller;
+package com.mishenkin.java15.service;
 
 import com.mishenkin.java15.dao.repository.PersonRepository;
 import com.mishenkin.java15.dao.repository.impl.PersonRepositoryFromPropertyFileImpl;
@@ -17,7 +17,7 @@ import java.io.InputStream;
 public class PropertyReader implements Runnable{
     private PersonalData personalData;
 
-    private String propertyFilePath;
+    private final String propertyFilePath;
     private static final Logger log = Logger.getLogger(PropertyReader.class);
 
     public PropertyReader(String propertyFilePath){
@@ -38,7 +38,7 @@ public class PropertyReader implements Runnable{
             } else this.personalData = new PersonalData();
         }
         else {
-            log.error("Property file not found. Using default values.");
+            log.error("Property file "+propertyFilePath+" not found. Using default values.");
             this.personalData = new PersonalData("FIO",
                     "DOB",
                     new String[]{"email"},

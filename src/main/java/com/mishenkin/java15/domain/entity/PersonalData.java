@@ -1,5 +1,7 @@
 package com.mishenkin.java15.domain.entity;
 
+import com.mishenkin.java15.common.constants.PersonPropertyErrors;
+
 import java.util.*;
 
 /**
@@ -214,43 +216,50 @@ public class PersonalData {
 
     public ArrayList<String> getEmailList(){
         ArrayList<String> emailList = new ArrayList<>();
-        Collections.addAll(emailList, email);
+        if (email==null) emailList.add(PersonPropertyErrors.EMAIL_ERROR[0]);
+        else  Collections.addAll(emailList, email);
         return emailList;
     }
 
     public ArrayList<String> getTargetList(){
         ArrayList<String> targetList = new ArrayList<>();
-        Collections.addAll(targetList, target);
+        if (target==null) targetList.add(PersonPropertyErrors.TARGET_ERROR[0]);
+        else Collections.addAll(targetList, target);
         return targetList;
     }
 
     public ArrayList<String> getExperiencesList(){
         ArrayList<String> experiencesList = new ArrayList<>();
-        Collections.addAll(experiencesList, experiences);
+        if (experiences == null) experiencesList.add(PersonPropertyErrors.EXPERIENCE_ERROR[0]);
+        else   Collections.addAll(experiencesList, experiences);
         return experiencesList;
     }
 
     public ArrayList<String> getEducationsList(){
         ArrayList<String> educationsList = new ArrayList<>();
-        Collections.addAll(educationsList, educations);
+        if (educations==null) educationsList.add(PersonPropertyErrors.EDUCATION_ERROR[0]);
+        else Collections.addAll(educationsList, educations);
         return educationsList;
     }
 
     public ArrayList<String> getAdditionalEducationsList(){
         ArrayList<String> additionalEducationList = new ArrayList<>();
-        Collections.addAll(additionalEducationList, additionalEducations);
+        if (additionalEducations==null) additionalEducationList.add(PersonPropertyErrors.ADDITIONAL_EDUCATION_ERROR[0]);
+        else Collections.addAll(additionalEducationList, additionalEducations);
         return additionalEducationList;
     }
 
     public ArrayList<String> getSkillsList(){
         ArrayList<String> skillsList = new ArrayList<>();
-        Collections.addAll(skillsList,skills);
+        if (skills==null) skillsList.add(PersonPropertyErrors.SKILLS_ERROR[0]);
+        else Collections.addAll(skillsList,skills);
         return skillsList;
     }
 
     public ArrayList<String> getCodeExaplesList(){
         ArrayList<String> codeExampleList = new ArrayList<>();
-        Collections.addAll(codeExampleList, examplesCode);
+        if (examplesCode == null) codeExampleList.add(PersonPropertyErrors.CODE_EXAMPLES_ERROR[0]);
+        else Collections.addAll(codeExampleList, examplesCode);
         return codeExampleList;
     }
 
@@ -264,5 +273,32 @@ public class PersonalData {
             });
         }
         return skillsMap;
+    }
+
+    public void setPersonalData(PersonalData personalData){
+        if (!personalData.getFIO().equals(PersonPropertyErrors.FIO_ERROR))
+            this.setFIO(personalData.getFIO());
+        if (!personalData.getDOB().equals(PersonPropertyErrors.DOB_ERROR))
+            this.setDOB(personalData.getDOB());
+        /*if (personalData.getEmail()[0].isEmpty())
+            this.setEmail(PersonPropertyErrors.EMAIL_ERROR);*/
+        if (!personalData.getEmail()[0].equals(PersonPropertyErrors.EMAIL_ERROR[0]))
+            this.setEmail(personalData.getEmail());
+        if (!personalData.getSkype().equals(PersonPropertyErrors.SKYPE_ERROR))
+            this.setSkype(personalData.getSkype());
+        if (!personalData.getAvatar().equals(PersonPropertyErrors.AVATAR_ERROR))
+            this.setAvatarPath(personalData.getAvatar());
+        if (!personalData.getTarget()[0].equals(PersonPropertyErrors.TARGET_ERROR[0]))
+            this.setTarget(personalData.getTarget());
+        if(!personalData.getExperiences()[0].equals(PersonPropertyErrors.EXPERIENCE_ERROR[0]))
+            this.setExperiences(personalData.getExperiences());
+        if (!personalData.getEducations()[0].equals(PersonPropertyErrors.EDUCATION_ERROR[0]))
+            this.setEducations(personalData.getEducations());
+        if (!personalData.getAdditionalEducations()[0].equals(PersonPropertyErrors.ADDITIONAL_EDUCATION_ERROR[0]))
+            this.setAdditionalEducations(personalData.getAdditionalEducations());
+        if (!personalData.getSkills()[0].equals(PersonPropertyErrors.SKILLS_ERROR[0]))
+            this.setSkills(personalData.getSkills());
+        if (!personalData.getExamplesCode()[0].equals(PersonPropertyErrors.CODE_EXAMPLES_ERROR[0]))
+            this.setExamplesCode(personalData.getExamplesCode());
     }
 }

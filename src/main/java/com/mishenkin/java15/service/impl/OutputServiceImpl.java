@@ -70,9 +70,9 @@ public class OutputServiceImpl implements OutputService{
                 new String[]{"codes"});
     }
 
-    public OutputServiceImpl(PersonalData personalData){
+   /* public OutputServiceImpl(PersonalData personalData){
         this.personalData= personalData;
-    }
+    }*/
 
     @Override
     public void createHtmlFile(String outputHttpFilePath){
