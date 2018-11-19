@@ -1,5 +1,6 @@
 package com.mishenkin.java15.service;
 
+import com.mishenkin.java15.common.constants.PersonPropertyErrors;
 import com.mishenkin.java15.dao.repository.PersonRepository;
 import com.mishenkin.java15.dao.repository.impl.PersonRepositoryFromPropertyFileImpl;
 import com.mishenkin.java15.domain.entity.PersonalData;
@@ -26,6 +27,7 @@ public class PropertyReader implements Runnable{
 
     @Override
     public void run(){
+        log.info("New thread start reading data from "+ propertyFilePath);
         if (new File(propertyFilePath).exists()){
             PersonRepository personRepository = null;
             try (InputStream fileInputStream = new FileInputStream(propertyFilePath) ){
@@ -39,18 +41,19 @@ public class PropertyReader implements Runnable{
         }
         else {
             log.error("Property file "+propertyFilePath+" not found. Using default values.");
-            this.personalData = new PersonalData("FIO",
-                    "DOB",
-                    new String[]{"email"},
-                    "skype",
-                    "avatar",
-                    new String[]{"target"},
-                    new String[]{"experiences"},
-                    new String[]{"educations"},
-                    new String[]{"additional educations"},
-                    new String[]{"skill01:10","skill03:30","skill02:20"},
-                    new String[]{"codes"});
+            this.personalData = new PersonalData(PersonPropertyErrors.FIO_ERROR,
+                    PersonPropertyErrors.DOB_ERROR,
+                    PersonPropertyErrors.EMAIL_ERROR,
+                    PersonPropertyErrors.SKYPE_ERROR,
+                    PersonPropertyErrors.AVATAR_ERROR,
+                    PersonPropertyErrors.TARGET_ERROR,
+                    PersonPropertyErrors.EXPERIENCE_ERROR,
+                    PersonPropertyErrors.EDUCATION_ERROR,
+                    PersonPropertyErrors.ADDITIONAL_EDUCATION_ERROR,
+                    PersonPropertyErrors.SKILLS_ERROR,
+                    PersonPropertyErrors.CODE_EXAMPLES_ERROR);
         }
+        log.info("Thread is finished reading  data from "+ propertyFilePath);
     }
 
     public PersonalData getPersonalData(){

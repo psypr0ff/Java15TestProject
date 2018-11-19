@@ -3,6 +3,7 @@ package com.mishenkin.java15;
 import com.mishenkin.java15.service.PropertyReader;
 import com.mishenkin.java15.domain.entity.PersonalData;
 import com.mishenkin.java15.view.HtmlView;
+import org.apache.log4j.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @SpringBootApplication
 public class SpringMain {
+    private static final Logger log = Logger.getLogger(SpringMain.class);
     private static final String PROPERTY_FILE_PATH_ONE =
             "src/main/resources/1.properties";
     private static final String PROPERTY_FILE_PATH_TWO =
@@ -31,17 +33,29 @@ public class SpringMain {
         PropertyReader propertyReader2 = new PropertyReader(PROPERTY_FILE_PATH_TWO);
 
         //запускаем потоки
-        propertyReader1.run();
-        propertyReader2.run();
+        Thread propertyThread1 = new Thread(propertyReader1);
+        Thread propertyThread2 = new Thread(propertyReader2);
+        propertyThread1.start();
+        propertyThread2.start();
+        try {
+            propertyThread1.join();
+            propertyThread2.join();
+        } catch (InterruptedException e) {
+            log.error("Main thread is interrupted");
+            //e.printStackTrace();
+        }
 
-        propertyReader2.getPersonalData().getAdditionalEducationsList().forEach(System.out::println);
+        //propertyReader1.run();
+        //propertyReader2.run();
+
+
         //передаем результаты
         personalData.setPersonalData(propertyReader1.getPersonalData());
         personalData.setPersonalData(propertyReader2.getPersonalData());
 
         //формируем строку с HTML данными
         HtmlView htmlView = new HtmlView(personalData);
-        System.out.println(htmlView.htmlData());
+
         return htmlView.htmlData();
     }
 
