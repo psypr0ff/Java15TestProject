@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;*/
 public class SpringMain {
     private static final Logger log = Logger.getLogger(SpringMain.class);
     private static final String PROPERTY_FILE_PATH =
-            "B:\\Users\\Александр\\IdeaProjects\\Java15TestProject\\src\\main\\resources\\input.properties";
+            "input.properties";
     private static final String OUTPUT_HTML_FILE_PATH =
             "outputLection6.html";
 
