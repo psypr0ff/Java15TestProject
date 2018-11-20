@@ -1,28 +1,35 @@
 package com.mishenkin.java15;
 
-import com.mishenkin.java15.service.PropertyReader;
-import com.mishenkin.java15.domain.entity.PersonalData;
+/*import com.mishenkin.java15.domain.entity.PersonalData;
+import com.mishenkin.java15.service.PropertyReader;*/
 import com.mishenkin.java15.view.HtmlView;
 import org.apache.log4j.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.context.ConfigurableApplicationContext;
+/*import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;*/
 
 /**
  * класс запускающий web-приложение
  * Created by Александр on 15.11.2018.
  */
-@RestController
+//@RestController
 @SpringBootApplication
 public class SpringMain {
     private static final Logger log = Logger.getLogger(SpringMain.class);
+    private static final String PROPERTY_FILE_PATH =
+            "B:\\Users\\Александр\\IdeaProjects\\Java15TestProject\\src\\main\\resources\\input.properties";
+    private static final String OUTPUT_HTML_FILE_PATH =
+            "outputLection6.html";
+
+    /* то, что закомментировано - нужно было для домашки к 5 лекции
     private static final String PROPERTY_FILE_PATH_ONE =
             "src/main/resources/1.properties";
     private static final String PROPERTY_FILE_PATH_TWO =
             "src/main/resources/2.properties";
 
-    //создаем строку выводящую ответ
+   //создаем строку выводящую ответ
     @RequestMapping("/")
     String htmlData(){
         PersonalData personalData = new PersonalData();
@@ -57,9 +64,11 @@ public class SpringMain {
         HtmlView htmlView = new HtmlView(personalData);
 
         return htmlView.htmlData();
-    }
+    }*/
 
     public static void main(String[] args){
-        SpringApplication.run(SpringMain.class, args);
+        ConfigurableApplicationContext context = SpringApplication.run(SpringMain.class, args);
+        HtmlView htmlGenerator = context.getBean(HtmlView.class);
+        htmlGenerator.generateHtmlFile(PROPERTY_FILE_PATH, OUTPUT_HTML_FILE_PATH);
     }
 }

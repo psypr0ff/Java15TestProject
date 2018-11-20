@@ -5,6 +5,7 @@ import com.mishenkin.java15.dao.repository.PersonRepository;
 import com.mishenkin.java15.dao.repository.impl.PersonRepositoryFromPropertyFileImpl;
 import com.mishenkin.java15.domain.entity.PersonalData;
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,15 +16,22 @@ import java.io.InputStream;
  * класс создающий поток чтения данных из проперти файла
  * Created by Александр on 15.11.2018.
  */
+@Component
 public class PropertyReader implements Runnable{
     private PersonalData personalData;
 
-    private final String propertyFilePath;
+    private  String propertyFilePath;
     private static final Logger log = Logger.getLogger(PropertyReader.class);
 
-    public PropertyReader(String propertyFilePath){
+    public PropertyReader(){}
+
+    public PropertyReader( String propertyFilePath){
         this.propertyFilePath = propertyFilePath;
     }
+
+    /*public void setPropertyFilePath(String propertyFilePath){
+        this.propertyFilePath = propertyFilePath;
+    }*/
 
     @Override
     public void run(){

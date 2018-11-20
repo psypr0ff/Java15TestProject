@@ -1,8 +1,14 @@
 package com.mishenkin.java15.view;
 
 import com.mishenkin.java15.domain.entity.PersonalData;
+import com.mishenkin.java15.service.PropertyService;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -11,10 +17,16 @@ import java.util.stream.Collectors;
  * класс генерирует содержимое для HTML файла
  * Created by Александр on 31.10.2018.
  */
+@Component
 public class HtmlView {
     private ArrayList<String> html;
-    private final PersonalData personalData;
+    private  PersonalData personalData;
     private static final Logger log = Logger.getLogger(HtmlView.class);
+    @Autowired
+    @Qualifier("propertyService")
+    PropertyService propertyService;
+
+    public HtmlView(){}
 
     public HtmlView(PersonalData personalData){
         this.personalData = personalData;
@@ -139,6 +151,19 @@ public class HtmlView {
 
     public String htmlData(){
         return this.getHtml().stream().map(e-> e).collect(Collectors.joining());
+    }
+
+    public void generateHtmlFile(String inputPath, String outputPath){
+        PersonalData personalData = propertyService.getPropertyDataByPropertyReader(inputPath);
+        if (personalData!=null) {
+            try (FileWriter writer = new FileWriter(outputPath)) {
+                writer.write(new HtmlView(personalData).htmlData());
+                writer.flush();
+
+            }catch (IOException e){
+                log.error("Generating HTML Error");
+            }
+        }
     }
 
 }
