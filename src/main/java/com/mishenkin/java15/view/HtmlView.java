@@ -22,9 +22,10 @@ public class HtmlView {
     private ArrayList<String> html;
     private  PersonalData personalData;
     private static final Logger log = Logger.getLogger(HtmlView.class);
+
     @Autowired
     @Qualifier("propertyService")
-    PropertyService propertyService;
+    private PropertyService propertyService;
 
     public HtmlView(){}
 
@@ -32,6 +33,9 @@ public class HtmlView {
         this.personalData = personalData;
     }
 
+    /**
+     * метод генерирующий содержимое HTML файла
+     */
     private void generateHtml(){
         html = new ArrayList<>();
         html.add("<!DOCTYPE html>");
@@ -142,17 +146,29 @@ public class HtmlView {
         log.info("Generating html data");
     }
 
+    /**
+     * метод возвращающий сгенерированно содержимое для HTML файла в виде списка строк
+     * @return
+     */
     public ArrayList<String> getHtml(){
         generateHtml();
         return this.html;
     }
 
 
-
+    /**
+     * метод возвращающий сгенерированно содержимое для HTML файла в виде одной строки
+     * @return
+     */
     public String htmlData(){
         return this.getHtml().stream().map(e-> e).collect(Collectors.joining());
     }
 
+    /**
+     * метод генерирующий HTML файл
+     * @param inputPath путь к файлу проперти с данными
+     * @param outputPath путь куда будет сохраняться сгенерированный файл
+     */
     public void generateHtmlFile(String inputPath, String outputPath){
         PersonalData personalData = propertyService.getPropertyDataByPropertyReader(inputPath);
         if (personalData!=null) {
@@ -164,6 +180,7 @@ public class HtmlView {
                 log.error("Generating HTML Error");
             }
         }
+        else log.error("Generating HTML Error, personal data is null");
     }
 
 }

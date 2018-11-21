@@ -19,7 +19,6 @@ import java.io.InputStream;
 @Component
 public class PropertyReader implements Runnable{
     private PersonalData personalData;
-
     private  String propertyFilePath;
     private static final Logger log = Logger.getLogger(PropertyReader.class);
 
@@ -28,10 +27,6 @@ public class PropertyReader implements Runnable{
     public PropertyReader( String propertyFilePath){
         this.propertyFilePath = propertyFilePath;
     }
-
-    /*public void setPropertyFilePath(String propertyFilePath){
-        this.propertyFilePath = propertyFilePath;
-    }*/
 
     @Override
     public void run(){
@@ -64,7 +59,19 @@ public class PropertyReader implements Runnable{
         log.info("Thread is finished reading  data from "+ propertyFilePath);
     }
 
+    /**
+     * метод возвращающий объект типа PersonalData
+     * @return PersonalData
+     */
     public PersonalData getPersonalData(){
         return this.personalData;
+    }
+
+    /**
+     * сеттер устанавливающий путь к проперти файлу
+     * @param propertyFilePath путь к проперти файлу
+     */
+    public void setPropertyFilePath(String propertyFilePath){
+        this.propertyFilePath = propertyFilePath;
     }
 }
