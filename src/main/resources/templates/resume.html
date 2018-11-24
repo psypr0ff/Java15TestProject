@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css'>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'></script>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+    <title>[[${FIO}]]</title>
+</head>
+<body style='background: grey;'>
+<div style='background: white; border: solid 1px black; margin-left:15%; margin-right: 15%; margin-top: 1%' >
+    <div class='row' >
+        <h1>
+            <center>Резюме</center>
+        </h1>
+    </div>
+    <div class='row center-block' >
+        <div class='col-md-8' >
+            <dl class='dl-horizontal' style='margin-bottom: 0;'>
+                <dt>Ф.И.О.</dt>
+                <dd th:text="${FIO}">ФИО</dd>
+            </dl>
+            <dl class='dl-horizontal' style='margin-bottom: 0;'>
+                <dt>Дата рождения</dt>
+                <dd th:text="${DOB}">дата рождения</dd>
+            </dl>
+            <dl class='dl-horizontal' style='margin-bottom: 0;' >
+                <dt >email</dt>
+                <dd th:each="email: ${email}">
+                    <p th:text="${email}">электронная почта</p>
+                </dd>
+            </dl>
+            <dl class='dl-horizontal' style='margin-bottom: 0;'>
+                <dt>Skype</dt>
+                <dd th:text="${skype}">скайп</dd>
+            </dl>
+        </div>
+        <div class='col-md-4'>
+            <img th:src='${avatar}' class='center-block' alt='Аватар' height='100'>
+        </div>
+    </div>
+    <div class='panel panel-default' style='margin: 20px; '>
+        <div class='panel-heading'>
+            <h3 class='panel-title'>Цель</h3>
+        </div>
+        <div class='panel-body' >
+            <ul th:each="target:${target}">
+                <li th:text="${target}">Цель</li>
+            </ul>
+        </div>
+    </div>
+    <div class='panel panel-default' style='margin: 20px; '>
+        <div class='panel-heading'>
+            <h3 class='panel-title'>Опыт</h3>
+        </div>
+        <div class='panel-body' >
+            <ul th:each="experience:${experience}">
+                <li th:text="${experience}">опыт</li>
+            </ul>
+        </div>
+    </div>
+    <div class='panel panel-default' style='margin: 20px; '>
+        <div class='panel-heading'>
+            <h3 class='panel-title'>Образование</h3>
+        </div>
+        <div class='panel-body'>
+            <ul th:each="education:${education}">
+                <li th:text="${education}">образование</li>
+            </ul>
+        </div>
+    </div>
+    <div class='panel panel-default' style='margin: 20px; '>
+        <div class='panel-heading'>
+            <h3 class='panel-title'>Доп.образование и курсы</h3>
+        </div>
+        <div class='panel-body'>
+            <ul th:each="addEducation:${addEducation}">
+                <li th:text="${addEducation}">доп образование</li>
+            </ul>
+        </div>
+    </div>
+    <div class='panel panel-default' style='margin: 20px; '>
+        <div class='panel-heading'>
+            <h3 class='panel-title'>Навыки</h3>
+        </div>
+        <div class='panel-body'>
+            <ul th:each="skills:${skills}">
+                <li th:text="${skills.value} +' '+ ${skills.key}"></li>
+            </ul>
+        </div>
+    </div>
+    <div class='panel panel-default' style='margin: 20px; '>
+        <div class='panel-heading'>
+            <h3 class='panel-title'>Пример кода</h3>
+        </div>
+        <div class='panel-body'>
+            <ul th:each="codeExamples:${codeExamples}">
+                <li><a th:href="${codeExamples}" th:text="${codeExamples}">примеры кода</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
