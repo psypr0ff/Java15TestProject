@@ -4,7 +4,9 @@ import com.mishenkin.java15.common.constants.PersonPropertyErrors;
 import com.mishenkin.java15.dao.repository.PersonRepository;
 import com.mishenkin.java15.dao.repository.impl.PersonRepositoryFromPropertyFileImpl;
 import com.mishenkin.java15.domain.entity.PersonalData;
+import com.mishenkin.java15.dto.ResumeRepository;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -21,6 +23,9 @@ public class PropertyReader implements Runnable{
     private PersonalData personalData;
     private  String propertyFilePath;
     private static final Logger log = Logger.getLogger(PropertyReader.class);
+
+    @Autowired
+    ResumeRepository resumeRepository;
 
     public PropertyReader(){}
 
@@ -57,6 +62,9 @@ public class PropertyReader implements Runnable{
                     PersonPropertyErrors.CODE_EXAMPLES_ERROR);
         }
         log.info("Thread is finished reading  data from "+ propertyFilePath);
+       /* PersonalData dbPersonaldata = new PersonalData();
+        P
+        resumeRepository.save(personalData);*/
     }
 
     /**

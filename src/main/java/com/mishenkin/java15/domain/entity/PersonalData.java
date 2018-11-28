@@ -2,6 +2,7 @@ package com.mishenkin.java15.domain.entity;
 
 import com.mishenkin.java15.common.constants.PersonPropertyErrors;
 
+import javax.persistence.*;
 import java.util.*;
 
 /**
@@ -9,7 +10,13 @@ import java.util.*;
  * и геттеры и сеттеры для них
  * Created by Александр on 30.10.2018.
  */
+@Entity
+@Table(name = "summary")
 public class PersonalData {
+    @Id
+    @GeneratedValue
+    private Long id;
+
     /**
      * Свойство - Фамилия Имя Отчество
      */
@@ -23,6 +30,7 @@ public class PersonalData {
     /**
      * Свойство - электронная почта
      */
+    @Column(columnDefinition = "CHAR(255)")
     private String[] email;
 
     /**
@@ -38,31 +46,37 @@ public class PersonalData {
     /**
      * Свойство - цель
      */
+    @Column(columnDefinition = "VARCHAR(255)")
     private String[] target;
 
     /**
      * Свойство - опыт работы
      */
+    @Column(columnDefinition = "VARCHAR(1000)")
     private String[] experiences;
 
     /**
      * Свойство - образование
      */
+    @Column(columnDefinition = "VARCHAR(1000)")
     private String[] educations;
 
     /**
      * Свойство - дополнительное образование
      */
+    @Column(columnDefinition = "VARCHAR(255)")
     private String[] additionalEducations;
 
     /**
      * Свойство - скилы
      */
+    @Column(columnDefinition = "VARCHAR(255)")
     private String[] skills;
 
     /**
      * Свойство - примеры кода
      */
+    @Column(columnDefinition = "VARCHAR(1000)")
     private String[] examplesCode;
 
     //конструктор
