@@ -42,19 +42,21 @@ public class PersonRepositoryFromPropertyFileImpl implements PersonRepository{
     @Override
     public PersonalData getPersonalData(){
         PersonalData personalData = null;
-            if (this.personDataFile != null) personalData = new PersonalData(
-                    personDataFile.getProperty(PersonPropertyKeys.FIO,"имя не указано"),
-                    personDataFile.getProperty(PersonPropertyKeys.DOB, "дата рождения не указана"),
-                    personDataFile.getProperty(PersonPropertyKeys.EMAIL, "электронная почта не указвна").split(";"),
-                    personDataFile.getProperty(PersonPropertyKeys.SKYPE, "skype не указан"),
-                    personDataFile.getProperty(PersonPropertyKeys.AVATAR, "' alt='не указана ссылка на автар'"),
-                    personDataFile.getProperty(PersonPropertyKeys.TARGET, "цели не указаны").split(";"),
-                    personDataFile.getProperty(PersonPropertyKeys.EXPERIENCES,"опыт не указан").split(";"),
-                    personDataFile.getProperty(PersonPropertyKeys.EDUCATIONS, "образование не указано").split(";"),
-                    personDataFile.getProperty(PersonPropertyKeys.ADDITIONAL_EDUCATIONS, "доп образование не указано").split(";"),
-                    personDataFile.getProperty(PersonPropertyKeys.SKILLS, "навыки не указаны").split(";"),
-                    personDataFile.getProperty(PersonPropertyKeys.EXAMPLES_CODE, "примеры кода отсутствуют").split(";")
-            );
+            if (this.personDataFile != null) {
+                personalData = new PersonalData(
+                        personDataFile.getProperty(PersonPropertyKeys.FIO, "имя не указано"),
+                        personDataFile.getProperty(PersonPropertyKeys.DOB, "дата рождения не указана"),
+                        personDataFile.getProperty(PersonPropertyKeys.EMAIL, "электронная почта не указвна").split(";"),
+                        personDataFile.getProperty(PersonPropertyKeys.SKYPE, "skype не указан"),
+                        personDataFile.getProperty(PersonPropertyKeys.AVATAR, "' alt='не указана ссылка на автар'"),
+                        personDataFile.getProperty(PersonPropertyKeys.TARGET, "цели не указаны").split(";"),
+                        personDataFile.getProperty(PersonPropertyKeys.EXPERIENCES, "опыт не указан").split(";"),
+                        personDataFile.getProperty(PersonPropertyKeys.EDUCATIONS, "образование не указано").split(";"),
+                        personDataFile.getProperty(PersonPropertyKeys.ADDITIONAL_EDUCATIONS, "доп образование не указано").split(";"),
+                        personDataFile.getProperty(PersonPropertyKeys.SKILLS, "навыки не указаны").split(";"),
+                        personDataFile.getProperty(PersonPropertyKeys.EXAMPLES_CODE, "примеры кода отсутствуют").split(";")
+                );
+            }
             log.info("Reading data from property file");
             return personalData;
     }

@@ -196,13 +196,19 @@ public class PersonalData {
     @Override //переопределяем метод equals для сравнения объекьлв
     public boolean equals(Object otherObject){
         //если объекты равны = true
-        if (this==otherObject) return true;
+        if (this==otherObject) {
+            return true;
+        }
 
         //если сравниваемый объект null тода false
-        if (otherObject == null) return false;
+        if (otherObject == null) {
+            return false;
+        }
 
         //если классы разные то false
-        if (getClass()!= otherObject.getClass()) return false;
+        if (getClass()!= otherObject.getClass()) {
+            return false;
+        }
 
         //приводим объект к типу PersonalData
         PersonalData other = (PersonalData) otherObject;
