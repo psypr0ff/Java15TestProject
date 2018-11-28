@@ -8,7 +8,7 @@ import java.util.Map;
  * объект ResumeDto с простыми полями
  * Created by Александр on 24.11.2018.
  */
-@Component
+//@Component
 public class ResumeDto {
     /**
      * Свойство - Фамилия Имя Отчество
