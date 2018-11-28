@@ -50,9 +50,8 @@ public class ResumeController {
 
     @RequestMapping("/db")
     public String getResumeFromDb(Model model){
-        Summary personalData;
         List<Summary> list = resumeRepository.findAll();
-        personalData = list.get(0);
+        Summary personalData = list.get(0);
         model.addAttribute("FIO", personalData.getFIO());
         model.addAttribute("DOB", personalData.getDOB());
         model.addAttribute("email", personalData.getEmail().split(";"));
