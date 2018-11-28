@@ -14,7 +14,7 @@ import org.springframework.context.ApplicationContext;
 public class ThymeleafMain {
     //путь к проеперти файлу
     private static final String PROPERTY_FILE_PATH =
-            "input.properties";
+            "src/main/resources/input.properties";
     public static void main(String[] args){
         ApplicationContext context = SpringApplication.run(ThymeleafMain.class);
 
