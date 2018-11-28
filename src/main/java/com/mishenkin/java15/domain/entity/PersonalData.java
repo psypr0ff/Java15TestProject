@@ -271,4 +271,9 @@ public class PersonalData {
         Collections.addAll(codeExampleList, examplesCode);
         return codeExampleList;
     }
+
+    @Override
+    public int hashCode(){
+        return Objects.hashCode(FIO+DOB);
+    }
 }
