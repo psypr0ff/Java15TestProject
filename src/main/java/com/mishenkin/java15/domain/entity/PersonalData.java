@@ -276,15 +276,15 @@ public class PersonalData {
     public int hashCode() {
         int result = FIO != null ? FIO.hashCode() : 0;
         result = 31 * result + (DOB != null ? DOB.hashCode() : 0);
-        result = 31 * result + Arrays.hashCode(email);
-        result = 31 * result + (skype != null ? skype.hashCode() : 0);
-        result = 31 * result + (avatar != null ? avatar.hashCode() : 0);
-        result = 31 * result + Arrays.hashCode(target);
-        result = 31 * result + Arrays.hashCode(experiences);
-        result = 31 * result + Arrays.hashCode(educations);
-        result = 31 * result + Arrays.hashCode(additionalEducations);
-        result = 31 * result + Arrays.hashCode(skills);
-        result = 31 * result + Arrays.hashCode(examplesCode);
+        result = 31 + result + Arrays.hashCode(email);
+        result = 31 + result + (skype != null ? skype.hashCode() : 0);
+        result = 31 + result + (avatar != null ? avatar.hashCode() : 0);
+        result = 31 + result + Arrays.hashCode(target);
+        result = 31 + result + Arrays.hashCode(experiences);
+        result = 31 + result + Arrays.hashCode(educations);
+        result = 31 + result + Arrays.hashCode(additionalEducations);
+        result = 31 + result + Arrays.hashCode(skills);
+        result = 31 + result + Arrays.hashCode(examplesCode);
         return result;
     }
 }
