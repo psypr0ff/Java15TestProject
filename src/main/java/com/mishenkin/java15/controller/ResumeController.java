@@ -44,6 +44,7 @@ public class ResumeController {
         model.addAttribute("addEducation", resumeDto.additionalEducations);
         model.addAttribute("skills", resumeDto.skills);
         model.addAttribute("codeExamples", resumeDto.examplesCode);
+        log.info("Get resume data from property file");
         return "resume";
     }
 
@@ -52,7 +53,6 @@ public class ResumeController {
         Summary personalData;
         List<Summary> list = resumeRepository.findAll();
         personalData = list.get(0);
-        log.info(personalData.getFIO());
         model.addAttribute("FIO", personalData.getFIO());
         model.addAttribute("DOB", personalData.getDOB());
         model.addAttribute("email", personalData.getEmail().split(";"));
@@ -69,7 +69,7 @@ public class ResumeController {
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
                         (e1, e2) -> e1, LinkedHashMap::new)));
         model.addAttribute("codeExamples", personalData.getExamplesCode().split(";"));
-
+        log.info("Get resume data from h2 dataBase");
         return "resume";
     }
 
