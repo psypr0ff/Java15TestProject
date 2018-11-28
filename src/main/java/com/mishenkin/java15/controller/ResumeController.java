@@ -1,13 +1,18 @@
 package com.mishenkin.java15.controller;
 
 import com.mishenkin.java15.domain.entity.PersonalData;
+import com.mishenkin.java15.domain.entity.Summary;
 import com.mishenkin.java15.dto.ResumeDto;
 import com.mishenkin.java15.dto.ResumeRepository;
 import com.mishenkin.java15.service.ResumeService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * контроллер ResumeController который отдает содержимое резюме
@@ -17,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class ResumeController {
+    private static final Logger log = Logger.getLogger(ResumeController.class);
 
     @Autowired
     private ResumeService resumeService;
@@ -43,20 +49,30 @@ public class ResumeController {
 
     @RequestMapping("/db")
     public String getResumeFromDb(Model model){
-        PersonalData personalData = resumeRepository.findById(1L).get();
+        Summary personalData;
+        List<Summary> list = resumeRepository.findAll();
+        personalData = list.get(0);
+        log.info(personalData.getFIO());
         model.addAttribute("FIO", personalData.getFIO());
         model.addAttribute("DOB", personalData.getDOB());
-        model.addAttribute("email", personalData.getEmail());
+        model.addAttribute("email", personalData.getEmail().split(";"));
         model.addAttribute("skype", personalData.getSkype());
         model.addAttribute("avatar", personalData.getAvatar());
-        model.addAttribute("target", personalData.getTarget());
-        model.addAttribute("experience", personalData.getExperiences());
-        model.addAttribute("education", personalData.getEducations());
-        model.addAttribute("addEducation", personalData.getAdditionalEducations());
-        model.addAttribute("skills", personalData.getSkillsMap());
-        model.addAttribute("codeExamples", personalData.getExamplesCode());
+        model.addAttribute("target", personalData.getTarget().split(";"));
+        model.addAttribute("experience", personalData.getExperiences().split(";"));
+        model.addAttribute("education", personalData.getEducations().split(";"));
+        model.addAttribute("addEducation", personalData.getAdditionalEducations().split(";"));
+        /*model.addAttribute("skills", personalData.getSkillsMap());*/
+        model.addAttribute("skills", personalData.getSkillsMap().entrySet()
+                .stream()
+                .sorted(Map.Entry.<String,String>comparingByValue().reversed())
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
+                        (e1, e2) -> e1, LinkedHashMap::new)));
+        model.addAttribute("codeExamples", personalData.getExamplesCode().split(";"));
+
         return "resume";
     }
+
 
 
 }
