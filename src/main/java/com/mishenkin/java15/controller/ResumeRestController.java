@@ -30,10 +30,11 @@ public class ResumeRestController {
         return resumeRepository.findById(id);
     }
 
-    @PutMapping("/put/{id}")
+    @PostMapping("{id}")
     public Summary updateResumeById(@PathVariable long id, @RequestBody Summary summary){
         resumeRepository.findById(id).get().setFIO(summary.getFIO());
-        return summary;
+        //resumeRepository.getOne(id)
+        return resumeRepository.getOne(id);
     }
 
     @PostMapping
