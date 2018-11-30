@@ -8,13 +8,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 /*import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;*/
+import org.springframework.web.bind.annotation.ResumeRestController;*/
 
 /**
  * класс запускающий web-приложение
  * Created by Александр on 15.11.2018.
  */
-//@RestController
+//@ResumeRestController
 @SpringBootApplication
 public class SpringMain {
     private static final Logger log = Logger.getLogger(SpringMain.class);
