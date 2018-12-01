@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" ng-app="singleResumeApp">
+<head>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css'>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+    <script th:inline="javascript">
+  var singleResumeApp = angular.module('singleResumeApp', []);
+  singleResumeApp.controller('singleResumeCtrl', function ($scope, $http){
+    $http.get('http://localhost:8081/rest/[[${id}]]').success(function(data) {
+      $scope.item = data;
+    });
+  });
+
+    </script>
+    <title>[[${FIO}]]</title>
+</head>
+<body style='background: grey;' ng-controller="singleResumeCtrl">
+<div style='background: white; border: solid 1px black; margin-left:15%; margin-right: 15%; margin-top: 1%' >
+    <div class='row' >
+        <h1>
+            <center>Резюме</center>
+        </h1>
+    </div>
+    <div class='row center-block' >
+        <div class='col-md-8' >
+            <dl class='dl-horizontal' style='margin-bottom: 0;'>
+                <dt>Ф.И.О.</dt>
+                <dd >{{item.fio}}</dd>
+            </dl>
+            <dl class='dl-horizontal' style='margin-bottom: 0;'>
+                <dt>Дата рождения</dt>
+                <dd>{{item.dob}}</dd>
+            </dl>
+            <dl class='dl-horizontal' style='margin-bottom: 0;' >
+                <dt >email</dt>
+                <dd >
+                    <p ng-repeat="email in item.emailArray">{{email}}</p>
+                </dd>
+            </dl>
+            <dl class='dl-horizontal' style='margin-bottom: 0;'>
+                <dt>Skype</dt>
+                <dd>{{item.skype}}</dd>
+            </dl>
+        </div>
+        <div class='col-md-4'>
+            <img src='{{item.avatar}}' class='center-block' alt='Аватар' height='100'>
+        </div>
+    </div>
+    <div class='panel panel-default' style='margin: 20px; '>
+        <div class='panel-heading'>
+            <h3 class='panel-title'>Цель</h3>
+        </div>
+        <div class='panel-body' >
+            <ul >
+                <li ng-repeat="target in item.targetArray">{{target}}</li>
+            </ul>
+        </div>
+    </div>
+    <div class='panel panel-default' style='margin: 20px; '>
+        <div class='panel-heading'>
+            <h3 class='panel-title'>Опыт</h3>
+        </div>
+        <div class='panel-body' >
+            <ul>
+                <li ng-repeat="experience in item.experienceArray">{{experience}}</li>
+            </ul>
+        </div>
+    </div>
+    <div class='panel panel-default' style='margin: 20px; '>
+        <div class='panel-heading'>
+            <h3 class='panel-title'>Образование</h3>
+        </div>
+        <div class='panel-body'>
+            <ul>
+                <li ng-repeat="education in item.educationArray">{{education}}</li>
+            </ul>
+        </div>
+    </div>
+    <div class='panel panel-default' style='margin: 20px; '>
+        <div class='panel-heading'>
+            <h3 class='panel-title'>Доп.образование и курсы</h3>
+        </div>
+        <div class='panel-body'>
+            <ul>
+                <li ng-repeat="addEducation in item.additionalEducationArray">{{addEducation}}</li>
+            </ul>
+        </div>
+    </div>
+    <div class='panel panel-default' style='margin: 20px; '>
+        <div class='panel-heading'>
+            <h3 class='panel-title'>Навыки</h3>
+        </div>
+        <div class='panel-body'>
+            <ul>
+                <li ng-repeat="(key, value) in item.sortedSkillsMap">{{key}} {{value}}</li>
+            </ul>
+        </div>
+    </div>
+    <div class='panel panel-default' style='margin: 20px; '>
+        <div class='panel-heading'>
+            <h3 class='panel-title'>Пример кода</h3>
+        </div>
+        <div class='panel-body'>
+            <ul>
+                <li ng-repeat="codeExample in item.codeExampleArray"><a href="{{codeExample}}">{{codeExample}}</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</body>
+</html>

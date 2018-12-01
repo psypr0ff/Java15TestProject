@@ -4,10 +4,9 @@ import com.mishenkin.java15.common.constants.PersonPropertyErrors;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
 
 /**
  * Created by Александр on 28.11.2018.
@@ -15,7 +14,8 @@ import java.util.concurrent.ThreadLocalRandom;
 @Entity
 public class Summary {
     @Id
-    /*@GeneratedValue(strategy = GenerationType.AUTO)*/
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "serial")
     private Long id;
 
     /**
@@ -128,7 +128,7 @@ public class Summary {
         this.DOB = DOB;
     }
 
-    public String getEmail() {
+    private String getEmail() {
         return email;
     }
 
@@ -152,7 +152,7 @@ public class Summary {
         this.avatar = avatar;
     }
 
-    public String getTarget() {
+    private String getTarget() {
         return target;
     }
 
@@ -160,7 +160,7 @@ public class Summary {
         this.target = target;
     }
 
-    public String getExperiences() {
+    private String getExperiences() {
         return experiences;
     }
 
@@ -168,7 +168,7 @@ public class Summary {
         this.experiences = experiences;
     }
 
-    public String getEducations() {
+    private String getEducations() {
         return educations;
     }
 
@@ -176,7 +176,7 @@ public class Summary {
         this.educations = educations;
     }
 
-    public String getAdditionalEducations() {
+    private String getAdditionalEducations() {
         return additionalEducations;
     }
 
@@ -184,8 +184,8 @@ public class Summary {
         this.additionalEducations = additionalEducations;
     }
 
-    @Transient
-    public String getSkills() {
+
+    private String getSkills() {
         return skills;
     }
 
@@ -193,7 +193,7 @@ public class Summary {
         this.skills = skills;
     }
 
-    public String getExamplesCode() {
+    private String getExamplesCode() {
         return examplesCode;
     }
 
@@ -201,15 +201,15 @@ public class Summary {
         this.examplesCode = examplesCode;
     }
 
-    @Transient
-    public ArrayList<String> getSkillsList(){
+
+    private ArrayList<String> getSkillsList(){
         ArrayList<String> skillsList = new ArrayList<>();
         if (skills==null) skillsList.add(PersonPropertyErrors.SKILLS_ERROR[0]);
         else Collections.addAll(skillsList,skills.split(";"));
         return skillsList;
     }
 
-    public HashMap<String, String> getSkillsMap(){
+    private HashMap<String, String> getSkillsMap(){
         HashMap<String, String> skillsMap = new HashMap<>();
         if (!getSkillsList().isEmpty()) {
             getSkillsList().forEach(e ->{
@@ -220,6 +220,39 @@ public class Summary {
         }
         return skillsMap;
     }
+
+    public HashMap<String,String> getSortedSkillsMap(){
+        return getSkillsMap().entrySet()
+                .stream()
+                .sorted(Map.Entry.<String,String>comparingByValue().reversed())
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
+                        (e1, e2) -> e1, LinkedHashMap::new));
+    }
+
+    public String[] getEmailArray(){
+        return getEmail().split(";");
+    }
+
+    public String[] getExperienceArray(){
+        return  getExperiences().split(";");
+    }
+
+    public String[] getTargetArray(){
+        return getTarget().split(";");
+    }
+
+    public String[] getEducationArray(){
+        return getEducations().split(";");
+    }
+
+    public String[] getAdditionalEducationArray(){
+        return getAdditionalEducations().split(";");
+    }
+
+    public String[] getCodeExampleArray(){
+        return getExamplesCode().split(";");
+    }
+
 
     public Long getId() {
         return id;

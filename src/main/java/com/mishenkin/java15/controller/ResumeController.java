@@ -54,20 +54,20 @@ public class ResumeController {
         Summary personalData = list.get(0);
         model.addAttribute("FIO", personalData.getFIO());
         model.addAttribute("DOB", personalData.getDOB());
-        model.addAttribute("email", personalData.getEmail().split(";"));
+        model.addAttribute("email", personalData.getEmailArray());
         model.addAttribute("skype", personalData.getSkype());
         model.addAttribute("avatar", personalData.getAvatar());
-        model.addAttribute("target", personalData.getTarget().split(";"));
-        model.addAttribute("experience", personalData.getExperiences().split(";"));
-        model.addAttribute("education", personalData.getEducations().split(";"));
-        model.addAttribute("addEducation", personalData.getAdditionalEducations().split(";"));
-        /*model.addAttribute("skills", personalData.getSkillsMap());*/
-        model.addAttribute("skills", personalData.getSkillsMap().entrySet()
+        model.addAttribute("target", personalData.getTargetArray());
+        model.addAttribute("experience", personalData.getExperienceArray());
+        model.addAttribute("education", personalData.getEducationArray());
+        model.addAttribute("addEducation", personalData.getAdditionalEducationArray());
+        model.addAttribute("skills", personalData.getSortedSkillsMap());
+        /*model.addAttribute("skills", personalData.getSkillsMap().entrySet()
                 .stream()
                 .sorted(Map.Entry.<String,String>comparingByValue().reversed())
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
-                        (e1, e2) -> e1, LinkedHashMap::new)));
-        model.addAttribute("codeExamples", personalData.getExamplesCode().split(";"));
+                        (e1, e2) -> e1, LinkedHashMap::new)));*/
+        model.addAttribute("codeExamples", personalData.getCodeExampleArray());
         log.info("Get resume data from h2 dataBase");
         return "resume";
     }

@@ -12,7 +12,7 @@ EDUCATIONS varchar(255),
 ADDITIONAL_EDUCATIONS varchar(255),
 SKILLS varchar(255)
 );*/
-ALTER table summary alter column id {bigint(19) not null auto_increment};
+/*ALTER table summary alter column id {bigint(19) not null auto_increment};*/
 insert into summary
 (
 /*ID,*/

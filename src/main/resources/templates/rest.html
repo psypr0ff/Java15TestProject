@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="resumeApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Resume List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script>
+  var resumeApp = angular.module('resumeApp', []);
+  resumeApp.controller('ResumeCtrl', function ($scope, $http){
+    $http.get('http://localhost:8081/rest').success(function(data) {
+      $scope.resumeList = data;
+    });
+  });
+    </script>
+
+</head>
+<body ng-controller="ResumeCtrl">
+<h2>Список резюме сохраненных в базе</h2>
+<table class="table table-striped">
+
+    <tr>
+        <th>Фио</th>
+        <th>Цель</th>
+        <th>id</th>
+    </tr>
+    <tr ng-repeat="resume in resumeList | orderBy: 'code' ">
+        <td>
+            <a href="http://localhost:8081/list/rest/resume/{{resume.id}}">{{resume.fio}}</a>
+        </td>
+        <td ng-repeat="target in resume.targetArray">{{target}}</td>
+        <td>{{resume.id}}</td>
+    </tr>
+</table>
+</body>
+</html>

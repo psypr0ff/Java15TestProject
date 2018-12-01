@@ -68,7 +68,7 @@ public class HtmlView {
                 html.add(e+"<br>");
             else html.add(e);
         });
-        //for (String e:personalData.getEmailList()) if (e.length()>1) html.add(e+"<br>");else html.add(e);
+        //for (String e:personalData.getEmailArray()) if (e.length()>1) html.add(e+"<br>");else html.add(e);
         html.add("</dd></dl>");
         html.add("<dl class='dl-horizontal' style='margin-bottom: 0;'>" +
                 "<dt>Skype</dt><dd>" +
