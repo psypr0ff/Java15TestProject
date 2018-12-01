@@ -3,13 +3,11 @@ package com.mishenkin.java15.domain.entity;
 import com.mishenkin.java15.common.constants.PersonPropertyErrors;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Created by Александр on 28.11.2018.
@@ -17,7 +15,7 @@ import java.util.HashMap;
 @Entity
 public class Summary {
     @Id
-    @GeneratedValue
+    /*@GeneratedValue(strategy = GenerationType.AUTO)*/
     private Long id;
 
     /**
@@ -186,6 +184,7 @@ public class Summary {
         this.additionalEducations = additionalEducations;
     }
 
+    @Transient
     public String getSkills() {
         return skills;
     }
@@ -202,6 +201,7 @@ public class Summary {
         this.examplesCode = examplesCode;
     }
 
+    @Transient
     public ArrayList<String> getSkillsList(){
         ArrayList<String> skillsList = new ArrayList<>();
         if (skills==null) skillsList.add(PersonPropertyErrors.SKILLS_ERROR[0]);
@@ -219,5 +219,13 @@ public class Summary {
             });
         }
         return skillsMap;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

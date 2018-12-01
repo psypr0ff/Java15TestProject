@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!--<meta charset="UTF-8">-->
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css'>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'></script>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+    <title>Resume List</title>
+</head>
+<body>
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">ФИО</th>
+            <th scope="col">Цель</th>
+        </tr>
+        </thead>
+        <tbody th:each="summary : ${summary}">
+        <tr>
+            <td >
+                <a th:href="'http://localhost:8081/list/'+${summary.id}" th:text="${summary.FIO}"></a>
+            </td>
+            <td th:text="${summary.target}">...</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

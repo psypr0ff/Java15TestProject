@@ -12,10 +12,10 @@ EDUCATIONS varchar(255),
 ADDITIONAL_EDUCATIONS varchar(255),
 SKILLS varchar(255)
 );*/
-
+ALTER table summary alter column id {bigint(19) not null auto_increment};
 insert into summary
 (
-ID,
+/*ID,*/
 FIO,
 DOB,
 email,
@@ -29,7 +29,7 @@ SKILLS,
 EXAMPLES_CODE
 )
 values (
-1,
+/*1,*/
 'Александр Сергеевич Мишенькин',
 '18.03.1987база',
 'm_alex_s@mail.ru;psypr0ff@gmail.com',
