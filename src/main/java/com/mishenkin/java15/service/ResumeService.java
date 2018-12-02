@@ -15,8 +15,7 @@ import java.util.stream.Collectors;
  */
 @Component
 public class ResumeService {
-    /*@Autowired
-    private ResumeDto resumeDto;*/
+
 
     @Autowired
     private PropertyReader propertyReader;
@@ -48,8 +47,4 @@ public class ResumeService {
         return resumeDto;
     }
 
- /*   public ResumeDto getResumeDtoFromDB(){
-
-        return
-    }*/
 }
