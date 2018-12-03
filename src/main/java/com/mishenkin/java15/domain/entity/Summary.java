@@ -148,9 +148,9 @@ public class Summary {
         return avatar;
     }
 
-    public void setAvatarPath(String avatar) {
+  /*  public void setAvatarPath(String avatar) {
         this.avatar = avatar;
-    }
+    }*/
 
     private String getTarget() {
         return target;

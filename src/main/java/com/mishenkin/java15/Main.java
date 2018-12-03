@@ -1,15 +1,16 @@
 package com.mishenkin.java15;
 
-import com.mishenkin.java15.service.api.OutputService;
-import com.mishenkin.java15.service.impl.OutputServiceImpl;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * Главный класс, точка входа
  * Created by Александр on 30.10.2018.
  */
+
+@SpringBootApplication
 public class Main {
     public static void main(String[] args) {
-        OutputService outputService = new OutputServiceImpl("input.properties");
-        outputService.createHtmlFile("output1.html");
+        SpringApplication.run(Main.class, args);
     }
 }
