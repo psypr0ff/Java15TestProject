@@ -29,7 +29,7 @@
     </tr>
     <tr id="resumeTable" ng-repeat="resume in resumeList | orderBy: 'code' ">
         <td>
-            <a href="http://localhost:8081/list/rest/resume/{{resume.id}}">{{resume.fio}}</a>
+            <a href="http://localhost:8081/resume/{{resume.id}}">{{resume.fio}}</a>
         </td>
         <td ng-repeat="exp in resume.experienceArray" ng-if="$last">{{exp}}</td>
         <td>{{resume.id}}</td>
@@ -97,7 +97,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-                    <button type="button" class="btn btn-primary" id="addResume">Добавить</button>
+                    <button type="submit" class="btn btn-primary" id="addResume">Добавить</button>
                 </div>
             </div>
         </div>
@@ -143,7 +143,7 @@ headers: {
   "target": $('#target').val() //,
   //"targetArray": ["string"]
 }),
-  success:  window.location.reload("true")
+  success:  window.location.reload("false")
   ,
   dataType: "json"
 });
