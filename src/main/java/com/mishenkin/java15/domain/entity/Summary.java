@@ -132,7 +132,7 @@ public class Summary {
         return email;
     }
 
-    public void setEmail(String email) {
+    private void setEmail(String email) {
         this.email = email;
     }
 
@@ -147,10 +147,6 @@ public class Summary {
     public String getAvatar() {
         return avatar;
     }
-
-  /*  public void setAvatarPath(String avatar) {
-        this.avatar = avatar;
-    }*/
 
     private String getTarget() {
         return target;
@@ -253,6 +249,7 @@ public class Summary {
         return getExamplesCode().split(";");
     }
 
+    private void setEmailArray(){}
 
     public Long getId() {
         return id;

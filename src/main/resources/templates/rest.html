@@ -42,9 +42,9 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <!--  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
-                    </button>
+                    </button>-->
                     <h4 class="modal-title" id="exampleModalLabel">Новое резюме</h4>
                 </div>
                 <div class="modal-body">
@@ -105,56 +105,43 @@
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<!--
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
--->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script>
     $('#exampleModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Кнопка, что спровоцировало модальное окно
-
-  $('#addResume').click(function(){
-$.ajax({
-headers: {
-        'Accept': '*/*',
-        'Content-Type': 'application/json'
-    },
-  url: 'http://localhost:8081/rest',
-  type: "POST",
-  data: JSON.stringify({
-  "additionalEducations": $('#addEducation').val(),
-  "avatar": $('#avatar').val(),
-  //"avatarPath": "string",
-  //"codeExampleArray": ["string"],
-  "dob": $('#dob').val(),
-  //"educationArray": ["string"],
-  "educations": $('#education').val(),
-  "email": $('#email').val(),
-  //"emailArray": [  "string"],
-  "examplesCode": $('#codeExample').val(),
-  //"experienceArray": ["string"],
-  "experiences": $('#experience').val(),
-  "fio": $('#fio').val(),
-  //"id": 0,
-  "skills": $('#skills').val(),
-  "skype": $('#skype').val(),
-  //"sortedSkillsMap": {},
-  "target": $('#target').val() //,
-  //"targetArray": ["string"]
-}),
-  success:  window.location.reload("false")
-  ,
-  dataType: "json"
 });
+  $('#addResume').click(function(){
+    $.ajax({
+        headers: {
+            'Accept': '*/*',
+            'Content-Type': 'application/json'
+        },
+        url: 'http://localhost:8081/rest',
+        type: "POST",
+        data: JSON.stringify({
+            "additionalEducations": $('#addEducation').val(),
+            "avatar": $('#avatar').val(),
+            "dob": $('#dob').val(),
+            "educations": $('#education').val(),
+            "email": $('#email').val(),
+            "examplesCode": $('#codeExample').val(),
+            "experiences": $('#experience').val(),
+            "fio": $('#fio').val(),
+            "skills": $('#skills').val(),
+            "skype": $('#skype').val(),
+            "target": $('#target').val()
+        }),
+        success:  window.location.reload("false"),
+        dataType: "json"
+    });
+  });
 
- });
-
-  var modal = $(this)
+  //var modal = $(this)
  // modal.find('.modal-title').text('New message to ' + recipient)
  // modal.find('.modal-body input').val(recipient)
 
-});
+
 </script>
 
 </html>

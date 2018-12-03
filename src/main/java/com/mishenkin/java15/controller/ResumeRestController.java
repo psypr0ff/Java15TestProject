@@ -39,15 +39,20 @@ public class ResumeRestController {
         return resumeRepository.save(newSummary);
     }
 
+    @DeleteMapping("{id}")
+    public void deleteById(@PathVariable long id){
+        resumeRepository.deleteById(id);
+    }
+
     @PostMapping
     public void saveNewResume(@RequestBody Summary summary){
         /*summary.setId(Long.valueOf(ThreadLocalRandom.current().nextInt()));*/
         resumeRepository.save(summary);
     }
 
-    @Controller
+    /*@Controller
     class ResumeListController{
-        /*@RequestMapping("/list")
+        *//*@RequestMapping("/list")
         public String resumeList(Model model){
             model.addAttribute("summary", getAll());
             return "list";
@@ -64,7 +69,7 @@ public class ResumeRestController {
             model.addAttribute("experience", personalData.getExperienceArray());
             model.addAttribute("education", personalData.getEducationArray());
             model.addAttribute("addEducation", personalData.getAdditionalEducationArray());
-        *//*model.addAttribute("skills", personalData.getSkillsMap());*//*
+        *//**//*model.addAttribute("skills", personalData.getSkillsMap());*//**//*
             model.addAttribute("skills", personalData.getSkillsMap().entrySet()
                     .stream()
                     .sorted(Map.Entry.<String,String>comparingByValue().reversed())
@@ -72,7 +77,7 @@ public class ResumeRestController {
                             (e1, e2) -> e1, LinkedHashMap::new)));
             model.addAttribute("codeExamples", personalData.getCodeExampleArray());
             return "resume";
-        }*/
+        }*//*
 
         @RequestMapping("/list/rest")
         public String listRest(Model model){
@@ -84,5 +89,5 @@ public class ResumeRestController {
             model.addAttribute("id", resumeRepository.getOne(id).getId());
             return "restresume";
         }
-    }
+    }*/
 }
