@@ -30,12 +30,42 @@
     <tr id="resumeTable" ng-repeat="resume in resumeList | orderBy: 'code' ">
         <td>
             <a href="http://localhost:8081/resume/{{resume.id}}">{{resume.fio}}</a>
+            <span class="badge badge-secondary" ng-repeat="tag in resume.tags" data-toggle="modal" data-target="#editTag" data-whatever="{{tag.tag}}" data-id="{{tag.id}}" data-resume="{{resume.id}}">{{tag.tag}}</span><span class="badge badge-secondary" data-toggle="modal" data-target="#addTag" data-whatever="{{resume.id}}">+</span>
         </td>
         <td ng-repeat="exp in resume.experienceArray" ng-if="$last">{{exp}}</td>
        <!-- <td>{{resume.id}}</td>-->
     </tr>
 </table>
-
+<div class="modal fade" id="addTag" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-body">
+            <form>
+                <input type="text" class="form-control" id="newTag" placeholder="новый тэг">
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+            <button type="submit" class="btn btn-primary" id="addTagBtn">Добавить</button>
+        </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="editTag" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form>
+                    <input type="text" class="form-control" id="editTagInput" placeholder="изменить тэг" value="tag.tag">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                <button type="submit" class="btn btn-primary" id="editTagBtn">Добавить</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="bd-example">
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Добавить резюме</button>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -130,6 +160,24 @@
         dataType: "json"
     });
   });
+  $('#editTag').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  //modal.find('.modal-title').text('New message to ' + recipient)
+  modal.find('.modal-body input').val(recipient+' tagId='+button.data('id')+' resumeId='+button.data('resume'))
+    });
+    $('#addTag').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  //modal.find('.modal-title').text('New message to ' + recipient)
+  modal.find('.modal-body input').val(recipient)
+    });
 </script>
 
 </html>

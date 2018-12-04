@@ -1,6 +1,6 @@
 package com.mishenkin.java15.controller;
 
-import com.mishenkin.java15.dto.ResumeRepository;
+import com.mishenkin.java15.repository.ResumeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

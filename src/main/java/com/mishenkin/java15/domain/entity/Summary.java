@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class Summary {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(columnDefinition = "serial")
+   // @Column(columnDefinition = "serial")
     private Long id;
 
     /**
@@ -81,6 +81,10 @@ public class Summary {
      */
     @Column(columnDefinition = "VARCHAR(1000)")
     private String examplesCode;
+
+    @OneToMany(fetch = FetchType.LAZY,cascade=CascadeType.ALL, mappedBy = "summary")
+    private List<Tags> tags;
+
 
     //конструктор
 /*    public PersonalData(
@@ -197,6 +201,17 @@ public class Summary {
         this.examplesCode = examplesCode;
     }
 
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+    public List<Tags> getTags() {
+        return tags;
+    }
+
+
+    public void setTags(List<Tags> tags) {
+        this.tags = tags;
+    }
 
     private ArrayList<String> getSkillsList(){
         ArrayList<String> skillsList = new ArrayList<>();

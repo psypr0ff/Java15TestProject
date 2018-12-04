@@ -61,3 +61,5 @@ https://github.com/psypr0ff/simbirsoftAvitoCatFinder;
 https://github.com/psypr0ff/ConsoleDownloader;
 https://github.com/psypr0ff/Java15TestProject'
 );
+insert into TAGS (ID, TAG, SUMMARY_ID) values (1,'TAG_1', 1);
+insert into TAGS (ID, TAG, SUMMARY_ID) values (2,'TAG_2', 1);

@@ -2,7 +2,9 @@ package com.mishenkin.java15.controller;
 
 
 import com.mishenkin.java15.domain.entity.Summary;
-import com.mishenkin.java15.dto.ResumeRepository;
+import com.mishenkin.java15.domain.entity.Tags;
+import com.mishenkin.java15.repository.ResumeRepository;
+import com.mishenkin.java15.repository.TagsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,10 +21,22 @@ import java.util.Optional;
 public class ResumeRestController {
     @Autowired
     private ResumeRepository resumeRepository;
+    @Autowired
+    private TagsRepository tagsRepository;
 
     @GetMapping
     public List<Summary> getAll(){
         return resumeRepository.findAll();
+    }
+
+    /*@GetMapping("/tag/{id}")
+    public List<Tags> getTagsById(@PathVariable long id){
+        return tagsRepository.findBySummaryId(id);
+    }*/
+
+    @GetMapping("/tag")
+    public List<Tags> getAllTags(){
+        return tagsRepository.findAll();
     }
 
     @GetMapping("{id}")
@@ -31,12 +45,9 @@ public class ResumeRestController {
     }
 
     @PutMapping("{id}")
-    public Summary updateResumeById(@PathVariable long id, @RequestBody Summary summary){
+    public Summary updateResumeById(@PathVariable Long id, @RequestBody Summary summary){
         Summary newSummary = summary;
         newSummary.setId(id);
-        //resumeRepository.findById(id).get().setFIO(summary.getFIO());
-        //newSummary = resumeRepository.getOne(id);
-
         return resumeRepository.save(newSummary);
     }
 
