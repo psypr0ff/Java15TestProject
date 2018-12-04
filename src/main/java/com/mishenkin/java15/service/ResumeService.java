@@ -1,5 +1,6 @@
 package com.mishenkin.java15.service;
 
+/*
 import com.mishenkin.java15.domain.entity.PersonalData;
 import com.mishenkin.java15.dto.ResumeDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,22 +9,23 @@ import org.springframework.stereotype.Component;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
+*/
 
 /**
  * ResumeService должен отдавать объект ResumeDto с простыми полями
  * Created by Александр on 23.11.2018.
  */
-@Component
+
 public class ResumeService {
 
 
-    @Autowired
+   /* @Autowired
     private PropertyReader propertyReader;
 
-    /**
+    *//**
      * метод возвращает объект ResumeDto c простыми полями
      * @return ResumeDto
-     */
+     *//*
     public ResumeDto getResumeDto(){
         ResumeDto resumeDto = new ResumeDto();
         PersonalData personalData = propertyReader.getPersonalData();
@@ -45,6 +47,6 @@ public class ResumeService {
                     (e1, e2) -> e1, LinkedHashMap::new));
         resumeDto.examplesCode = personalData.getExamplesCode();
         return resumeDto;
-    }
+    }*/
 
 }

@@ -25,14 +25,14 @@
     <tr>
         <th>Фио</th>
         <th>Должность</th>
-        <th>id</th>
+        <!--<th>id</th>-->
     </tr>
     <tr id="resumeTable" ng-repeat="resume in resumeList | orderBy: 'code' ">
         <td>
             <a href="http://localhost:8081/resume/{{resume.id}}">{{resume.fio}}</a>
         </td>
         <td ng-repeat="exp in resume.experienceArray" ng-if="$last">{{exp}}</td>
-        <td>{{resume.id}}</td>
+       <!-- <td>{{resume.id}}</td>-->
     </tr>
 </table>
 
