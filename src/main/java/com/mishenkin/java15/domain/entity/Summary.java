@@ -79,7 +79,7 @@ public class Summary {
     /**
      * Свойство - примеры кода
      */
-  /*  @Column(columnDefinition = "VARCHAR(255)")*/
+    @Column(columnDefinition = "VARCHAR(1000)")
     private String examplesCode;
 
     //конструктор
@@ -128,11 +128,11 @@ public class Summary {
         this.DOB = DOB;
     }
 
-    private String getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    private void setEmail(String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
@@ -148,7 +148,7 @@ public class Summary {
         return avatar;
     }
 
-    private String getTarget() {
+    public String getTarget() {
         return target;
     }
 
@@ -156,7 +156,7 @@ public class Summary {
         this.target = target;
     }
 
-    private String getExperiences() {
+    public String getExperiences() {
         return experiences;
     }
 
@@ -164,7 +164,7 @@ public class Summary {
         this.experiences = experiences;
     }
 
-    private String getEducations() {
+    public String getEducations() {
         return educations;
     }
 
@@ -172,7 +172,7 @@ public class Summary {
         this.educations = educations;
     }
 
-    private String getAdditionalEducations() {
+    public String getAdditionalEducations() {
         return additionalEducations;
     }
 
@@ -181,7 +181,7 @@ public class Summary {
     }
 
 
-    private String getSkills() {
+    public String getSkills() {
         return skills;
     }
 
@@ -189,7 +189,7 @@ public class Summary {
         this.skills = skills;
     }
 
-    private String getExamplesCode() {
+    public String getExamplesCode() {
         return examplesCode;
     }
 
@@ -248,8 +248,6 @@ public class Summary {
     public String[] getCodeExampleArray(){
         return getExamplesCode().split(";");
     }
-
-    private void setEmailArray(){}
 
     public Long getId() {
         return id;

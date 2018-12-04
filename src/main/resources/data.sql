@@ -38,26 +38,26 @@ values (
 'Глубже изучить язык JAVA',
 
 'АО "ИНТЕЛ А/О": технический консультант;
- АО "АБН АМРО Банк": Специалист IT;
- МБОУ Лицей №16 при УлГТУ г.Димитровграда: Учитель информатики;
- ООО "КС Техника": менеджер',
+АО "АБН АМРО Банк": Специалист IT;
+МБОУ Лицей №16 при УлГТУ г.Димитровграда: Учитель информатики;
+ООО "КС Техника": менеджер',
 
- 'МГИЭТ, Управление качеством;
- УлГТУ, Управление качеством',
+'МГИЭТ, Управление качеством;
+УлГТУ, Управление качеством',
 
- 'IT.Place: Автоматизация тестирования-4;
-  IT.Place: QA-11;
-  IT.Place:  Java. Разработка в тестировании UI',
+'IT.Place: Автоматизация тестирования-4;
+IT.Place: QA-11;
+IT.Place:  Java. Разработка в тестировании UI',
 
-  'JAVA;
-  Delphi:30;
-  C++:20;
-  PHP:50;
-  HTML:40;
-  SQL:60',
+'JAVA;
+Delphi:30;
+C++:20;
+PHP:50;
+HTML:40;
+SQL:60',
 
-  'https://github.com/psypr0ff/SimbirsoftSeleleniumAdvancedHomework;
-  https://github.com/psypr0ff/simbirsoftAvitoCatFinder;
-  https://github.com/psypr0ff/ConsoleDownloader;
-  https://github.com/psypr0ff/Java15TestProject'
+'https://github.com/psypr0ff/SimbirsoftSeleleniumAdvancedHomework;
+https://github.com/psypr0ff/simbirsoftAvitoCatFinder;
+https://github.com/psypr0ff/ConsoleDownloader;
+https://github.com/psypr0ff/Java15TestProject'
 );
